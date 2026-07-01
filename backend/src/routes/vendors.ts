@@ -192,7 +192,7 @@ router.get('/:id/scorecard', async (c) => {
     deficient,
     expired,
     open_deficiencies: openDeficiencies,
-    certificates: certs,
+    certificates: certs.length,
   })
 })
 
