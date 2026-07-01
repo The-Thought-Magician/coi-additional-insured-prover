@@ -40,7 +40,7 @@ const app = new Hono()
 
 const allowedOrigins = [
   process.env.FRONTEND_URL ?? 'http://localhost:3000',
-  'https://coi-additional-insured-prover.vercel.app',
+  'https://coi-additional-insured-prover-ventures.vercel.app',
 ]
 
 app.use(
