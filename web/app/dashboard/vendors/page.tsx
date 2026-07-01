@@ -37,7 +37,7 @@ interface VendorFilters {
   risk_tier?: string
 }
 
-const STATUSES = ['active', 'pending', 'inactive', 'terminated']
+const STATUSES = ['active', 'inactive', 'archived']
 const RISK_TIERS = ['low', 'medium', 'high']
 
 const blankForm = {

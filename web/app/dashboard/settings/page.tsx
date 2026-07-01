@@ -102,6 +102,11 @@ export default function SettingsPage() {
   const [joinError, setJoinError] = useState<string | null>(null)
   const [joinMsg, setJoinMsg] = useState<string | null>(null)
 
+  // Create workspace
+  const [newWsName, setNewWsName] = useState('')
+  const [creatingWs, setCreatingWs] = useState(false)
+  const [createWsError, setCreateWsError] = useState<string | null>(null)
+
   // Seed
   const [seeding, setSeeding] = useState(false)
   const [seedError, setSeedError] = useState<string | null>(null)
@@ -212,6 +217,24 @@ export default function SettingsPage() {
       setJoinError(e?.message || 'Failed to join workspace')
     } finally {
       setJoining(false)
+    }
+  }
+
+  async function createWorkspace() {
+    if (!newWsName.trim()) {
+      setCreateWsError('Workspace name is required')
+      return
+    }
+    setCreatingWs(true)
+    setCreateWsError(null)
+    try {
+      await api.createWorkspace({ name: newWsName.trim() })
+      setNewWsName('')
+      await load()
+    } catch (e: any) {
+      setCreateWsError(e?.message || 'Failed to create workspace')
+    } finally {
+      setCreatingWs(false)
     }
   }
 
@@ -482,6 +505,32 @@ export default function SettingsPage() {
           </CardBody>
         </Card>
       )}
+
+      {/* Create a new workspace */}
+      <Card>
+        <CardHeader>
+          <h2 className="text-lg font-semibold text-white">Create a Workspace</h2>
+          <p className="mt-1 text-sm text-slate-400">
+            Start a new workspace for your organization. You will be the owner and can invite teammates afterward.
+          </p>
+        </CardHeader>
+        <CardBody className="space-y-3">
+          {createWsError && (
+            <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{createWsError}</div>
+          )}
+          <div className="flex flex-wrap items-center gap-3">
+            <input
+              value={newWsName}
+              onChange={(e) => setNewWsName(e.target.value)}
+              placeholder="Workspace name (e.g. Acme Construction)"
+              className="min-w-[220px] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+            />
+            <Button onClick={createWorkspace} disabled={creatingWs}>
+              {creatingWs ? <Spinner /> : 'Create Workspace'}
+            </Button>
+          </div>
+        </CardBody>
+      </Card>
 
       {/* Join another workspace */}
       <Card>

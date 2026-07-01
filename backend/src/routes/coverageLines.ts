@@ -90,8 +90,12 @@ const updateSchema = createSchema.partial().omit({ certificate_id: true })
 // GET /certificate/:certificateId — public read: coverage lines for a cert
 // ---------------------------------------------------------------------------
 
-router.get('/certificate/:certificateId', async (c) => {
+router.get('/certificate/:certificateId', authMiddleware, async (c) => {
+  const userId = getUserId(c)
   const certificateId = c.req.param('certificateId')
+  const wsId = await certWorkspace(certificateId)
+  if (!wsId) return c.json({ error: 'Certificate not found' }, 404)
+  if (!(await isMember(userId, wsId))) return c.json({ error: 'Forbidden' }, 403)
   const lines = await db
     .select()
     .from(coverage_lines)

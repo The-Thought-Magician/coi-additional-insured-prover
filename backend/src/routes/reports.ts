@@ -124,10 +124,21 @@ router.get('/overview', async (c) => {
     .select()
     .from(coverage_gaps)
     .where(eq(coverage_gaps.workspace_id, wsId))
-  const uninsuredSet = new Set<string>()
-  for (const g of gaps) {
-    if (g.worked_uninsured) uninsuredSet.add(g.vendor_id)
-  }
+  const workedUninsuredGaps = gaps.filter((g) => g.worked_uninsured)
+  const vendorNameById = new Map(wsVendors.map((v) => [v.id, v.legal_name]))
+  const wsProjects = await db.select().from(projects).where(eq(projects.workspace_id, wsId))
+  const projectNameById = new Map(wsProjects.map((p) => [p.id, p.name]))
+  const uninsuredVendors = workedUninsuredGaps
+    .map((g) => ({
+      vendor_id: g.vendor_id,
+      legal_name: vendorNameById.get(g.vendor_id) ?? null,
+      project_id: g.project_id,
+      project_name: projectNameById.get(g.project_id) ?? null,
+      coverage_type: g.coverage_type,
+      gap_days: g.gap_days,
+    }))
+    .sort((a, b) => (b.gap_days ?? 0) - (a.gap_days ?? 0))
+  const uninsuredVendorCount = new Set(workedUninsuredGaps.map((g) => g.vendor_id)).size
 
   return c.json({
     kpis: {
@@ -139,7 +150,8 @@ router.get('/overview', async (c) => {
     },
     deficiency_by_reason: deficiencyByReason,
     expiring_count: expiringCount,
-    uninsured_vendors: uninsuredSet.size,
+    uninsured_vendors: uninsuredVendors,
+    uninsured_vendor_count: uninsuredVendorCount,
   })
 })
 

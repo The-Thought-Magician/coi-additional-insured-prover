@@ -63,8 +63,8 @@ interface Certificate {
   compliance_status?: string | null
 }
 
-const RISK_TIERS = ['low', 'standard', 'high', 'critical']
-const STATUSES = ['active', 'inactive', 'pending', 'terminated']
+const RISK_TIERS = ['low', 'medium', 'high']
+const STATUSES = ['active', 'inactive', 'archived']
 
 function fmtDate(d?: string | null): string {
   if (!d) return '—'

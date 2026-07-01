@@ -50,9 +50,12 @@ async function memberOfCertWorkspace(certificateId: string, userId: string) {
   return { ok: true as const, cert }
 }
 
-// Public read: full endorsement ledger for a certificate.
-router.get('/certificate/:certificateId', async (c) => {
+// Full endorsement ledger for a certificate (auth + workspace membership required).
+router.get('/certificate/:certificateId', authMiddleware, async (c) => {
+  const userId = getUserId(c)
   const certificateId = c.req.param('certificateId')
+  const result = await memberOfCertWorkspace(certificateId, userId)
+  if (!result.ok) return c.json({ error: result.error }, result.status)
   const rows = await db
     .select()
     .from(endorsements)

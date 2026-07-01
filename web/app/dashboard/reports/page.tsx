@@ -103,7 +103,10 @@ export default function ReportsPage() {
       num(k.open_deficiencies ?? k.deficiencies) ||
       byReason.reduce((s, r) => s + num(r.count), 0)
     const expiringCount = num(overview?.expiring_count ?? k.expiring ?? expiring)
-    const uninsured = num(overview?.uninsured_vendors ?? k.uninsured_vendors ?? k.working_uninsured)
+    const uninsuredRaw = overview?.uninsured_vendor_count ?? overview?.uninsured_vendors
+    const uninsured = num(
+      Array.isArray(uninsuredRaw) ? uninsuredRaw.length : uninsuredRaw ?? k.uninsured_vendors ?? k.working_uninsured,
+    )
 
     return {
       compliancePct: pct(compliantVendors, totalV),

@@ -35,7 +35,7 @@ interface Template {
   version?: number
 }
 
-const STATUSES = ['active', 'planning', 'on_hold', 'completed', 'closed']
+const STATUSES = ['active', 'completed', 'on_hold', 'archived']
 
 function fmtDate(d?: string | null): string {
   if (!d) return '—'

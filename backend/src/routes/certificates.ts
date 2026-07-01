@@ -321,16 +321,29 @@ function gradeCertificate(
   const byType = new Map<string, typeof coverage_lines.$inferSelect>()
   for (const l of lines) if (!byType.has(l.coverage_type)) byType.set(l.coverage_type, l)
 
-  const aiEndorsements = ends.filter(
-    (e) => e.provided && /additional_insured/i.test(e.endorsement_type),
-  )
+  // Endorsement types are recognized in two formats that must both be
+  // supported: the standard ACORD form-number codes used by the
+  // endorsements API/UI (cg_20_10, cg_20_37, blanket_ai, cg_24_04, pnc,
+  // other) and free-text descriptive labels used by seed/demo data and
+  // freeform parsing (e.g. "additional_insured_ongoing"). Grading must
+  // recognize either, or endorsements added through the real UI would
+  // never satisfy AI/waiver requirements.
+  const isAiType = (t: string) => /additional_insured/i.test(t) || t === 'cg_20_10' || t === 'cg_20_37' || t === 'blanket_ai'
+  const isOngoingAiType = (t: string) => t === 'cg_20_10' || /ongoing|additional_insured$/i.test(t)
+  const isCompletedAiType = (t: string) => t === 'cg_20_37' || /complete/i.test(t)
+  const isBlanketAiType = (t: string) => t === 'blanket_ai'
+  const isWaiverType = (t: string) => t === 'cg_24_04' || /waiver|subrog/i.test(t)
+  const isPncType = (t: string) => t === 'pnc' || /primary|non[- ]?contrib/i.test(t)
+
+  const aiEndorsements = ends.filter((e) => e.provided && isAiType(e.endorsement_type))
   const hasOngoingAi = aiEndorsements.some(
-    (e) => e.is_blanket || /ongoing|additional_insured$/i.test(e.endorsement_type),
+    (e) => e.is_blanket || isBlanketAiType(e.endorsement_type) || isOngoingAiType(e.endorsement_type),
   )
   const hasCompletedAi = aiEndorsements.some(
-    (e) => e.is_blanket || /complete/i.test(e.endorsement_type),
+    (e) => e.is_blanket || isBlanketAiType(e.endorsement_type) || isCompletedAiType(e.endorsement_type),
   )
-  const hasBlanketAi = aiEndorsements.some((e) => e.is_blanket)
+  const hasBlanketAi = aiEndorsements.some((e) => e.is_blanket || isBlanketAiType(e.endorsement_type))
+  const hasEndorsementPnc = ends.some((e) => e.provided && isPncType(e.endorsement_type))
 
   function pass(rule: string, detail: string) {
     results.push({ rule, passed: true, detail })
@@ -461,7 +474,7 @@ function gradeCertificate(
 
   // 7. Primary & non-contributory.
   if (template.require_pnc) {
-    if (gl?.pnc_box) pass('pnc', 'Primary & non-contributory confirmed on GL')
+    if (gl?.pnc_box || hasEndorsementPnc) pass('pnc', 'Primary & non-contributory confirmed on GL')
     else
       fail(
         'pnc',
@@ -475,7 +488,7 @@ function gradeCertificate(
   if (template.require_waiver_subrogation) {
     const hasWaiver =
       lines.some((l) => l.subrogation_waived_box) ||
-      ends.some((e) => e.provided && /waiver|subrog/i.test(e.endorsement_type))
+      ends.some((e) => e.provided && isWaiverType(e.endorsement_type))
     if (hasWaiver) pass('waiver', 'Waiver of subrogation present')
     else
       fail(

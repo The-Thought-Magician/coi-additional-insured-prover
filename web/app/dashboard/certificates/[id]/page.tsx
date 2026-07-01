@@ -73,7 +73,7 @@ interface Attachment {
 }
 
 const COVERAGE_TYPES = ['general_liability', 'auto_liability', 'umbrella', 'workers_comp', 'professional_liability', 'pollution']
-const ENDORSEMENT_TYPES = ['additional_insured', 'waiver_of_subrogation', 'primary_noncontributory', 'notice_of_cancellation']
+const ENDORSEMENT_TYPES = ['cg_20_10', 'cg_20_37', 'blanket_ai', 'cg_24_04', 'pnc', 'other']
 
 const inputCls =
   'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none'
@@ -250,7 +250,7 @@ export default function CertificateDetailPage() {
     const d = endModal.data
     const payload = {
       certificate_id: id,
-      endorsement_type: d.endorsement_type || 'additional_insured',
+      endorsement_type: d.endorsement_type || 'cg_20_10',
       coverage_type: d.coverage_type || null,
       form_number: d.form_number || null,
       edition_date: d.edition_date || null,
@@ -522,7 +522,7 @@ export default function CertificateDetailPage() {
       <Card>
         <CardHeader className="flex items-center justify-between">
           <h2 className="text-base font-semibold text-white">Endorsement ledger</h2>
-          <Button variant="secondary" onClick={() => setEndModal({ mode: 'create', data: { endorsement_type: 'additional_insured', provided: true } })}>
+          <Button variant="secondary" onClick={() => setEndModal({ mode: 'create', data: { endorsement_type: 'cg_20_10', provided: true } })}>
             + Add endorsement
           </Button>
         </CardHeader>

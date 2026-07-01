@@ -1,3 +1,10 @@
+process.on('unhandledRejection', (reason) => {
+  console.error('Unhandled promise rejection (ignored):', reason)
+})
+process.on('uncaughtException', (err) => {
+  console.error('Uncaught exception (ignored):', err)
+})
+
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
