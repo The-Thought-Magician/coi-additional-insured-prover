@@ -186,7 +186,7 @@ export default function RenewalsPage() {
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Renewals</h1>
-          <p className="text-sm text-slate-400">Expiry radar and outreach for lapsing coverage.</p>
+          <p className="text-sm text-stone-400">Expiry radar and outreach for lapsing coverage.</p>
         </div>
         <div className="flex gap-2">
           <Button variant="secondary" onClick={load}>Refresh</Button>
@@ -211,7 +211,7 @@ export default function RenewalsPage() {
                 value={c}
                 hint={b.hint}
                 tone={b.tone === 'amber' ? 'warning' : (b.tone as any)}
-                className={`transition-colors ${active ? 'ring-2 ring-amber-500/60' : 'hover:border-slate-700'}`}
+                className={`transition-colors ${active ? 'ring-2 ring-cyan-500/60' : 'hover:border-stone-700'}`}
               />
             </button>
           )
@@ -221,8 +221,8 @@ export default function RenewalsPage() {
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">Radar distribution</h2>
-            <span className="text-xs text-slate-500">{total} expiring coverage lines</span>
+            <h2 className="text-sm font-semibold text-stone-200">Radar distribution</h2>
+            <span className="text-xs text-stone-500">{total} expiring coverage lines</span>
           </div>
         </CardHeader>
         <CardBody>
@@ -231,11 +231,11 @@ export default function RenewalsPage() {
               const c = counts[b.key]
               const pct = Math.round((c / maxCount) * 100)
               const barColor =
-                b.tone === 'danger' ? 'bg-red-500' : b.tone === 'warning' ? 'bg-amber-500' : b.tone === 'amber' ? 'bg-amber-400' : 'bg-sky-500'
+                b.tone === 'danger' ? 'bg-red-500' : b.tone === 'warning' ? 'bg-cyan-500' : b.tone === 'amber' ? 'bg-cyan-400' : 'bg-sky-500'
               return (
                 <div key={b.key} className="flex items-center gap-3">
-                  <div className="w-36 shrink-0 text-xs text-slate-400">{b.label}</div>
-                  <div className="h-5 flex-1 overflow-hidden rounded bg-slate-800">
+                  <div className="w-36 shrink-0 text-xs text-stone-400">{b.label}</div>
+                  <div className="h-5 flex-1 overflow-hidden rounded bg-stone-800">
                     <div className={`h-full ${barColor} transition-all`} style={{ width: `${Math.max(c > 0 ? 6 : 0, pct)}%` }} />
                   </div>
                   <div className="w-10 shrink-0 text-right text-sm font-semibold text-white">{c}</div>
@@ -249,14 +249,14 @@ export default function RenewalsPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">
-              {BUCKETS.find((b) => b.key === activeBucket)?.label} <span className="text-slate-500">({bucketRows.length})</span>
+            <h2 className="text-sm font-semibold text-stone-200">
+              {BUCKETS.find((b) => b.key === activeBucket)?.label} <span className="text-stone-500">({bucketRows.length})</span>
             </h2>
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search vendor, carrier, policy..."
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500/60 focus:outline-none sm:w-72"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500/60 focus:outline-none sm:w-72"
             />
           </div>
         </CardHeader>
@@ -281,7 +281,7 @@ export default function RenewalsPage() {
                   const d = daysUntil(row.expiry_date)
                   return (
                     <TR key={row.id || row.certificate_id || i}>
-                      <TD className="font-medium text-slate-200">{row.vendor_name || row.vendor_id || '—'}</TD>
+                      <TD className="font-medium text-stone-200">{row.vendor_name || row.vendor_id || '—'}</TD>
                       <TD>{row.coverage_type || '—'}</TD>
                       <TD>{row.carrier_name || '—'}</TD>
                       <TD className="font-mono text-xs">{row.policy_number || '—'}</TD>
@@ -306,15 +306,15 @@ export default function RenewalsPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">
-              Renewal reminders <span className="text-slate-500">({filteredReminders.length})</span>
+            <h2 className="text-sm font-semibold text-stone-200">
+              Renewal reminders <span className="text-stone-500">({filteredReminders.length})</span>
             </h2>
-            <div className="flex gap-1 rounded-lg border border-slate-700 bg-slate-950 p-1 text-xs">
+            <div className="flex gap-1 rounded-lg border border-stone-700 bg-stone-950 p-1 text-xs">
               {(['all', 'pending', 'requested'] as const).map((f) => (
                 <button
                   key={f}
                   onClick={() => setReminderFilter(f)}
-                  className={`rounded px-3 py-1 capitalize transition-colors ${reminderFilter === f ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}
+                  className={`rounded px-3 py-1 capitalize transition-colors ${reminderFilter === f ? 'bg-cyan-500 text-stone-950' : 'text-stone-400 hover:text-white'}`}
                 >
                   {f}
                 </button>
@@ -346,7 +346,7 @@ export default function RenewalsPage() {
                   const requested = !!r.requested_at || (r.status ?? '').toLowerCase() === 'requested'
                   return (
                     <TR key={r.id}>
-                      <TD className="font-medium text-slate-200">{r.vendor_id || '—'}</TD>
+                      <TD className="font-medium text-stone-200">{r.vendor_id || '—'}</TD>
                       <TD>{r.coverage_type || '—'}</TD>
                       <TD>{fmtDate(r.expiry_date)}</TD>
                       <TD>
@@ -388,30 +388,30 @@ export default function RenewalsPage() {
         <form id="reminder-form" onSubmit={submitReminder} className="space-y-4">
           {formError && <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</div>}
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Vendor ID *</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Vendor ID *</label>
             <input
               value={form.vendor_id}
               onChange={(e) => setForm({ ...form, vendor_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
               placeholder="vendor uuid"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Certificate ID</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Certificate ID</label>
             <input
               value={form.certificate_id}
               onChange={(e) => setForm({ ...form, certificate_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
               placeholder="optional"
             />
           </div>
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Coverage type</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Coverage type</label>
               <select
                 value={form.coverage_type}
                 onChange={(e) => setForm({ ...form, coverage_type: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
               >
                 {['General Liability', 'Auto Liability', 'Umbrella', 'Workers Comp', 'Professional Liability', 'Pollution'].map((c) => (
                   <option key={c} value={c}>{c}</option>
@@ -419,12 +419,12 @@ export default function RenewalsPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Expiry date *</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Expiry date *</label>
               <input
                 type="date"
                 value={form.expiry_date}
                 onChange={(e) => setForm({ ...form, expiry_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
               />
             </div>
           </div>

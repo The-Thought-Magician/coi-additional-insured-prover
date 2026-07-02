@@ -192,12 +192,12 @@ export default function VendorDetailPage() {
       {/* Header */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <div className="mb-1 text-sm text-slate-500">
-            <Link href="/dashboard/vendors" className="hover:text-amber-400">
+          <div className="mb-1 text-sm text-stone-500">
+            <Link href="/dashboard/vendors" className="hover:text-cyan-400">
               Vendors
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-slate-400">{vendor.legal_name}</span>
+            <span className="text-stone-400">{vendor.legal_name}</span>
           </div>
           <h1 className="flex flex-wrap items-center gap-3 text-2xl font-bold text-white">
             {vendor.legal_name}
@@ -209,7 +209,7 @@ export default function VendorDetailPage() {
             )}
           </h1>
           {(vendor.dba || vendor.trade) && (
-            <p className="mt-1 text-sm text-slate-400">
+            <p className="mt-1 text-sm text-stone-400">
               {vendor.dba ? `DBA ${vendor.dba}` : ''}
               {vendor.dba && vendor.trade ? ' · ' : ''}
               {vendor.trade || ''}
@@ -229,7 +229,7 @@ export default function VendorDetailPage() {
 
       {/* Scorecard */}
       <div>
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500">Compliance scorecard</h2>
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-stone-500">Compliance scorecard</h2>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-5">
           <Stat label="Certificates" value={certCount} />
           <Stat label="Compliant" value={compliant} tone="success" />
@@ -246,10 +246,10 @@ export default function VendorDetailPage() {
         <Card className="mt-4">
           <CardBody>
             <div className="flex items-center justify-between text-sm">
-              <span className="font-medium text-slate-300">Certificate compliance</span>
+              <span className="font-medium text-stone-300">Certificate compliance</span>
               <span className="font-semibold text-white">{compliancePct}%</span>
             </div>
-            <div className="mt-3 flex h-3 w-full overflow-hidden rounded-full bg-slate-800">
+            <div className="mt-3 flex h-3 w-full overflow-hidden rounded-full bg-stone-800">
               {certCount > 0 ? (
                 <>
                   <div
@@ -263,14 +263,14 @@ export default function VendorDetailPage() {
                     title={`${deficient} deficient`}
                   />
                   <div
-                    className="bg-amber-500"
+                    className="bg-cyan-500"
                     style={{ width: `${(expired / certCount) * 100}%` }}
                     title={`${expired} expired`}
                   />
                 </>
               ) : null}
             </div>
-            <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-400">
+            <div className="mt-3 flex flex-wrap gap-4 text-xs text-stone-400">
               <span className="flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-emerald-500" /> Compliant ({compliant})
               </span>
@@ -278,7 +278,7 @@ export default function VendorDetailPage() {
                 <span className="h-2 w-2 rounded-full bg-red-500" /> Deficient ({deficient})
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="h-2 w-2 rounded-full bg-amber-500" /> Expired ({expired})
+                <span className="h-2 w-2 rounded-full bg-cyan-500" /> Expired ({expired})
               </span>
             </div>
           </CardBody>
@@ -298,7 +298,7 @@ export default function VendorDetailPage() {
               label="Email"
               value={
                 vendor.contact_email ? (
-                  <a href={`mailto:${vendor.contact_email}`} className="text-amber-400 hover:underline">
+                  <a href={`mailto:${vendor.contact_email}`} className="text-cyan-400 hover:underline">
                     {vendor.contact_email}
                   </a>
                 ) : null
@@ -308,7 +308,7 @@ export default function VendorDetailPage() {
             <Field label="Address" value={vendor.address} />
             {vendor.tags && vendor.tags.length > 0 && (
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Tags</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Tags</div>
                 <div className="mt-1 flex flex-wrap gap-1.5">
                   {vendor.tags.map((t) => (
                     <Badge key={t} tone="neutral">
@@ -320,11 +320,11 @@ export default function VendorDetailPage() {
             )}
             {vendor.notes && (
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Notes</div>
-                <p className="mt-1 whitespace-pre-wrap text-slate-300">{vendor.notes}</p>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Notes</div>
+                <p className="mt-1 whitespace-pre-wrap text-stone-300">{vendor.notes}</p>
               </div>
             )}
-            <div className="border-t border-slate-800 pt-3 text-xs text-slate-500">
+            <div className="border-t border-stone-800 pt-3 text-xs text-stone-500">
               Created {fmtDate(vendor.created_at)} · Updated {fmtDate(vendor.updated_at)}
             </div>
           </CardBody>
@@ -360,9 +360,9 @@ export default function VendorDetailPage() {
                   <TBody>
                     {assignments.map((a) => (
                       <TR key={a.id}>
-                        <TD className="font-medium text-slate-200">
+                        <TD className="font-medium text-stone-200">
                           {a.project_id ? (
-                            <Link href={`/dashboard/projects/${a.project_id}`} className="hover:text-amber-400">
+                            <Link href={`/dashboard/projects/${a.project_id}`} className="hover:text-cyan-400">
                               {a.project_name || a.project_id}
                             </Link>
                           ) : (
@@ -424,12 +424,12 @@ export default function VendorDetailPage() {
                   <TBody>
                     {certificates.map((c) => (
                       <TR key={c.id}>
-                        <TD className="font-medium text-slate-200">
+                        <TD className="font-medium text-stone-200">
                           {c.insured_name || c.holder_text || c.producer || c.id.slice(0, 8)}
                         </TD>
                         <TD>
                           {c.project_id ? (
-                            <Link href={`/dashboard/projects/${c.project_id}`} className="hover:text-amber-400">
+                            <Link href={`/dashboard/projects/${c.project_id}`} className="hover:text-cyan-400">
                               {c.project_name || c.project_id.slice(0, 8)}
                             </Link>
                           ) : (
@@ -513,14 +513,14 @@ export default function VendorDetailPage() {
 function Field({ label, value }: { label: string; value?: React.ReactNode }) {
   return (
     <div>
-      <div className="text-xs uppercase tracking-wide text-slate-500">{label}</div>
-      <div className="mt-0.5 text-slate-300">{value || '—'}</div>
+      <div className="text-xs uppercase tracking-wide text-stone-500">{label}</div>
+      <div className="mt-0.5 text-stone-300">{value || '—'}</div>
     </div>
   )
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/40'
 
 function Input({
   label,
@@ -537,7 +537,7 @@ function Input({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-stone-400">{label}</span>
       <input
         type={type}
         value={value}
@@ -552,7 +552,7 @@ function Input({
 function Textarea({ label, value, onChange }: { label: string; value: string; onChange: (v: string) => void }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-stone-400">{label}</span>
       <textarea rows={3} value={value} onChange={(e) => onChange(e.target.value)} className={inputCls} />
     </label>
   )
@@ -571,7 +571,7 @@ function Select({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-stone-400">{label}</span>
       <select value={value} onChange={(e) => onChange(e.target.value)} className={inputCls}>
         {options.map((o) => (
           <option key={o} value={o}>

@@ -236,19 +236,19 @@ export default function ProjectDetailPage() {
       {/* Header */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <div className="mb-1 text-sm text-slate-500">
-            <Link href="/dashboard/projects" className="hover:text-amber-400">
+          <div className="mb-1 text-sm text-stone-500">
+            <Link href="/dashboard/projects" className="hover:text-cyan-400">
               Projects
             </Link>
             <span className="mx-2">/</span>
-            <span className="text-slate-400">{project.name}</span>
+            <span className="text-stone-400">{project.name}</span>
           </div>
           <h1 className="flex flex-wrap items-center gap-3 text-2xl font-bold text-white">
             {project.name}
             {project.status && <Badge tone={toneForStatus(project.status)}>{project.status}</Badge>}
             {project.lender_mandated && <Badge tone="warning">Lender mandated</Badge>}
           </h1>
-          {project.address && <p className="mt-1 text-sm text-slate-400">{project.address}</p>}
+          {project.address && <p className="mt-1 text-sm text-stone-400">{project.address}</p>}
         </div>
         <div className="flex gap-2">
           <Button variant="secondary" onClick={openEdit}>
@@ -273,19 +273,19 @@ export default function ProjectDetailPage() {
       <Card>
         <CardBody>
           <div className="flex items-center justify-between text-sm">
-            <span className="font-medium text-slate-300">Project compliance</span>
+            <span className="font-medium text-stone-300">Project compliance</span>
             <span className="font-semibold text-white">{compliancePct}%</span>
           </div>
-          <div className="mt-3 flex h-3 w-full overflow-hidden rounded-full bg-slate-800">
+          <div className="mt-3 flex h-3 w-full overflow-hidden rounded-full bg-stone-800">
             {total > 0 && (
               <>
                 <div className="bg-emerald-500" style={{ width: `${(compliant / total) * 100}%` }} title={`${compliant} compliant`} />
                 <div className="bg-red-500" style={{ width: `${(deficient / total) * 100}%` }} title={`${deficient} deficient`} />
-                <div className="bg-amber-500" style={{ width: `${(expiring / total) * 100}%` }} title={`${expiring} expiring`} />
+                <div className="bg-cyan-500" style={{ width: `${(expiring / total) * 100}%` }} title={`${expiring} expiring`} />
               </>
             )}
           </div>
-          <div className="mt-3 flex flex-wrap gap-4 text-xs text-slate-400">
+          <div className="mt-3 flex flex-wrap gap-4 text-xs text-stone-400">
             <span className="flex items-center gap-1.5">
               <span className="h-2 w-2 rounded-full bg-emerald-500" /> Compliant ({compliant})
             </span>
@@ -293,7 +293,7 @@ export default function ProjectDetailPage() {
               <span className="h-2 w-2 rounded-full bg-red-500" /> Deficient ({deficient})
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-2 w-2 rounded-full bg-amber-500" /> Expiring ({expiring})
+              <span className="h-2 w-2 rounded-full bg-cyan-500" /> Expiring ({expiring})
             </span>
           </div>
         </CardBody>
@@ -313,18 +313,18 @@ export default function ProjectDetailPage() {
               label="Requirement template"
               value={
                 project.template_id ? (
-                  <Link href={`/dashboard/templates/${project.template_id}`} className="text-amber-400 hover:underline">
+                  <Link href={`/dashboard/templates/${project.template_id}`} className="text-cyan-400 hover:underline">
                     {project.template_name || 'View template'}
                   </Link>
                 ) : (
-                  <span className="text-slate-600">none</span>
+                  <span className="text-stone-600">none</span>
                 )
               }
             />
             <Field label="Certificate holder text" value={project.holder_entity_text} />
             <Field label="Start" value={fmtDate(project.start_date)} />
             <Field label="End" value={fmtDate(project.end_date)} />
-            <div className="border-t border-slate-800 pt-3 text-xs text-slate-500">
+            <div className="border-t border-stone-800 pt-3 text-xs text-stone-500">
               Created {fmtDate(project.created_at)}
             </div>
           </CardBody>
@@ -364,8 +364,8 @@ export default function ProjectDetailPage() {
                     const comp = a.compliance_status || a.status
                     return (
                       <TR key={a.id}>
-                        <TD className="font-medium text-slate-200">
-                          <Link href={`/dashboard/vendors/${a.vendor_id}`} className="hover:text-amber-400">
+                        <TD className="font-medium text-stone-200">
+                          <Link href={`/dashboard/vendors/${a.vendor_id}`} className="hover:text-cyan-400">
                             {vname}
                           </Link>
                           {a.risk_tier && (
@@ -382,7 +382,7 @@ export default function ProjectDetailPage() {
                           {fmtDate(a.onsite_start)} → {fmtDate(a.onsite_end)}
                         </TD>
                         <TD>
-                          {comp ? <Badge tone={toneForStatus(comp)}>{comp}</Badge> : <span className="text-slate-600">—</span>}
+                          {comp ? <Badge tone={toneForStatus(comp)}>{comp}</Badge> : <span className="text-stone-600">—</span>}
                         </TD>
                         <TD className="text-right">
                           <div className="flex justify-end gap-1">
@@ -442,7 +442,7 @@ export default function ProjectDetailPage() {
           </div>
           <div className="grid grid-cols-2 items-end gap-3">
             <label className="block">
-              <span className="mb-1 block text-xs font-medium text-slate-400">Status</span>
+              <span className="mb-1 block text-xs font-medium text-stone-400">Status</span>
               <select
                 value={editForm.status ?? 'active'}
                 onChange={(e) => setEditForm({ ...editForm, status: e.target.value })}
@@ -455,12 +455,12 @@ export default function ProjectDetailPage() {
                 ))}
               </select>
             </label>
-            <label className="flex items-center gap-2 pb-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 pb-2 text-sm text-stone-300">
               <input
                 type="checkbox"
                 checked={!!editForm.lender_mandated}
                 onChange={(e) => setEditForm({ ...editForm, lender_mandated: e.target.checked })}
-                className="h-4 w-4 rounded border-slate-600 bg-slate-950 text-amber-500 focus:ring-amber-500/40"
+                className="h-4 w-4 rounded border-stone-600 bg-stone-950 text-cyan-500 focus:ring-cyan-500/40"
               />
               Lender mandated
             </label>
@@ -509,7 +509,7 @@ export default function ProjectDetailPage() {
           ) : (
             <>
               <label className="block">
-                <span className="mb-1 block text-xs font-medium text-slate-400">Vendor</span>
+                <span className="mb-1 block text-xs font-medium text-stone-400">Vendor</span>
                 <select
                   value={assignForm.vendor_id}
                   onChange={(e) => setAssignForm({ ...assignForm, vendor_id: e.target.value })}
@@ -530,7 +530,7 @@ export default function ProjectDetailPage() {
                 <Input label="Onsite end" type="date" value={assignForm.onsite_end} onChange={(v) => setAssignForm({ ...assignForm, onsite_end: v })} />
               </div>
               <label className="block">
-                <span className="mb-1 block text-xs font-medium text-slate-400">Scope of work</span>
+                <span className="mb-1 block text-xs font-medium text-stone-400">Scope of work</span>
                 <textarea
                   rows={3}
                   value={assignForm.scope_of_work}
@@ -549,14 +549,14 @@ export default function ProjectDetailPage() {
 function Field({ label, value }: { label: string; value?: React.ReactNode }) {
   return (
     <div>
-      <div className="text-xs uppercase tracking-wide text-slate-500">{label}</div>
-      <div className="mt-0.5 text-slate-300">{value || '—'}</div>
+      <div className="text-xs uppercase tracking-wide text-stone-500">{label}</div>
+      <div className="mt-0.5 text-stone-300">{value || '—'}</div>
     </div>
   )
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/40'
 
 function Input({
   label,
@@ -573,7 +573,7 @@ function Input({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-stone-400">{label}</span>
       <input
         type={type}
         value={value}

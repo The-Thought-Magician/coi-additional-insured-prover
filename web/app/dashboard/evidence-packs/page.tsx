@@ -165,7 +165,7 @@ export default function EvidencePacksPage() {
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Evidence Packs</h1>
-          <p className="text-sm text-slate-400">Immutable compliance snapshots for audits, lenders, and litigation.</p>
+          <p className="text-sm text-stone-400">Immutable compliance snapshots for audits, lenders, and litigation.</p>
         </div>
         <div className="flex gap-2">
           <Button variant="secondary" onClick={loadAll}>Refresh</Button>
@@ -187,14 +187,14 @@ export default function EvidencePacksPage() {
       <Card>
         <CardHeader>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <h2 className="text-sm font-semibold text-slate-200">
-              Evidence packs <span className="text-slate-500">({filtered.length})</span>
+            <h2 className="text-sm font-semibold text-stone-200">
+              Evidence packs <span className="text-stone-500">({filtered.length})</span>
             </h2>
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search title, vendor, project..."
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500/60 focus:outline-none sm:w-72"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500/60 focus:outline-none sm:w-72"
             />
           </div>
         </CardHeader>
@@ -220,7 +220,7 @@ export default function EvidencePacksPage() {
               <TBody>
                 {filtered.map((p) => (
                   <TR key={p.id}>
-                    <TD className="font-medium text-slate-200">{p.title || 'Untitled pack'}</TD>
+                    <TD className="font-medium text-stone-200">{p.title || 'Untitled pack'}</TD>
                     <TD>
                       <div className="flex flex-wrap gap-1">
                         {p.vendor_id && <Badge tone="info">Vendor</Badge>}
@@ -231,7 +231,7 @@ export default function EvidencePacksPage() {
                     </TD>
                     <TD>{vendorName(p.vendor_id) || '—'}</TD>
                     <TD>{projectName(p.project_id) || '—'}</TD>
-                    <TD className="text-xs text-slate-400">{fmtDate(p.created_at)}</TD>
+                    <TD className="text-xs text-stone-400">{fmtDate(p.created_at)}</TD>
                     <TD className="text-right">
                       <Button variant="secondary" className="px-3 py-1 text-xs" onClick={() => openSnapshot(p.id)}>
                         View snapshot
@@ -261,20 +261,20 @@ export default function EvidencePacksPage() {
         <form id="pack-form" onSubmit={submitPack} className="space-y-4">
           {formError && <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</div>}
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Title *</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Title *</label>
             <input
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
               placeholder="Q2 Lender Compliance Snapshot"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Vendor</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Vendor</label>
             <select
               value={form.vendor_id}
               onChange={(e) => setForm({ ...form, vendor_id: e.target.value, certificate_id: '' })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
             >
               <option value="">None</option>
               {vendors.map((v) => (
@@ -283,11 +283,11 @@ export default function EvidencePacksPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Project</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Project</label>
             <select
               value={form.project_id}
               onChange={(e) => setForm({ ...form, project_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
             >
               <option value="">None</option>
               {projects.map((p) => (
@@ -296,11 +296,11 @@ export default function EvidencePacksPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Certificate</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Certificate</label>
             <select
               value={form.certificate_id}
               onChange={(e) => setForm({ ...form, certificate_id: e.target.value })}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
             >
               <option value="">None</option>
               {formCerts.map((c) => (
@@ -309,7 +309,7 @@ export default function EvidencePacksPage() {
                 </option>
               ))}
             </select>
-            <p className="mt-1 text-xs text-slate-500">Pick at least one scope. Certificates filter to the selected vendor.</p>
+            <p className="mt-1 text-xs text-stone-500">Pick at least one scope. Certificates filter to the selected vendor.</p>
           </div>
         </form>
       </Modal>
@@ -327,32 +327,32 @@ export default function EvidencePacksPage() {
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3 text-sm">
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Vendor</div>
-                <div className="text-slate-200">{vendorName(viewing.vendor_id) || '—'}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Vendor</div>
+                <div className="text-stone-200">{vendorName(viewing.vendor_id) || '—'}</div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Project</div>
-                <div className="text-slate-200">{projectName(viewing.project_id) || '—'}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Project</div>
+                <div className="text-stone-200">{projectName(viewing.project_id) || '—'}</div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Certificate</div>
-                <div className="font-mono text-xs text-slate-200">{viewing.certificate_id || '—'}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Certificate</div>
+                <div className="font-mono text-xs text-stone-200">{viewing.certificate_id || '—'}</div>
               </div>
               <div>
-                <div className="text-xs uppercase tracking-wide text-slate-500">Generated</div>
-                <div className="text-slate-200">{fmtDate(viewing.created_at)}</div>
+                <div className="text-xs uppercase tracking-wide text-stone-500">Generated</div>
+                <div className="text-stone-200">{fmtDate(viewing.created_at)}</div>
               </div>
             </div>
 
             <div>
               <div className="mb-2 flex items-center justify-between">
-                <div className="text-xs font-semibold uppercase tracking-wide text-slate-400">Immutable snapshot</div>
+                <div className="text-xs font-semibold uppercase tracking-wide text-stone-400">Immutable snapshot</div>
                 <Badge tone="success">Frozen at generation</Badge>
               </div>
               {viewing.snapshot ? (
                 <SnapshotView snapshot={viewing.snapshot} />
               ) : (
-                <p className="text-sm text-slate-500">No snapshot payload available.</p>
+                <p className="text-sm text-stone-500">No snapshot payload available.</p>
               )}
             </div>
           </div>
@@ -375,19 +375,19 @@ function SnapshotView({ snapshot }: { snapshot: any }) {
   return (
     <div className="space-y-3">
       <div className="flex justify-end">
-        <button onClick={() => setRaw((r) => !r)} className="text-xs text-amber-400 hover:text-amber-300">
+        <button onClick={() => setRaw((r) => !r)} className="text-xs text-cyan-400 hover:text-cyan-300">
           {raw ? 'Structured view' : 'Raw JSON'}
         </button>
       </div>
       {raw ? (
-        <pre className="max-h-96 overflow-auto rounded-lg border border-slate-800 bg-slate-950 p-3 text-xs text-slate-300">
+        <pre className="max-h-96 overflow-auto rounded-lg border border-stone-800 bg-stone-950 p-3 text-xs text-stone-300">
           {JSON.stringify(snapshot, null, 2)}
         </pre>
       ) : (
         <div className="space-y-3">
           {sections.map(({ key, value }) => (
-            <div key={key} className="rounded-lg border border-slate-800 bg-slate-950/60">
-              <div className="border-b border-slate-800 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-slate-400">
+            <div key={key} className="rounded-lg border border-stone-800 bg-stone-950/60">
+              <div className="border-b border-stone-800 px-3 py-2 text-xs font-semibold uppercase tracking-wide text-stone-400">
                 {key.replace(/_/g, ' ')}
               </div>
               <div className="px-3 py-2">
@@ -402,20 +402,20 @@ function SnapshotView({ snapshot }: { snapshot: any }) {
 }
 
 function renderValue(value: any) {
-  if (value == null) return <span className="text-sm text-slate-500">—</span>
+  if (value == null) return <span className="text-sm text-stone-500">—</span>
   if (Array.isArray(value)) {
-    if (value.length === 0) return <span className="text-sm text-slate-500">Empty</span>
+    if (value.length === 0) return <span className="text-sm text-stone-500">Empty</span>
     if (typeof value[0] === 'object' && value[0] !== null) {
       const cols = Array.from(new Set(value.flatMap((row: any) => Object.keys(row))))
       return (
         <div className="overflow-x-auto">
           <table className="w-full text-left text-xs">
-            <thead className="text-slate-500">
+            <thead className="text-stone-500">
               <tr>{cols.map((c) => <th key={c} className="px-2 py-1 font-medium">{c.replace(/_/g, ' ')}</th>)}</tr>
             </thead>
-            <tbody className="divide-y divide-slate-800">
+            <tbody className="divide-y divide-stone-800">
               {value.map((row: any, i: number) => (
-                <tr key={i}>{cols.map((c) => <td key={c} className="px-2 py-1 text-slate-300">{formatScalar(row[c])}</td>)}</tr>
+                <tr key={i}>{cols.map((c) => <td key={c} className="px-2 py-1 text-stone-300">{formatScalar(row[c])}</td>)}</tr>
               ))}
             </tbody>
           </table>
@@ -429,14 +429,14 @@ function renderValue(value: any) {
       <dl className="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
         {Object.entries(value).map(([k, v]) => (
           <div key={k} className="contents">
-            <dt className="text-slate-500">{k.replace(/_/g, ' ')}</dt>
-            <dd className="text-slate-300">{formatScalar(v)}</dd>
+            <dt className="text-stone-500">{k.replace(/_/g, ' ')}</dt>
+            <dd className="text-stone-300">{formatScalar(v)}</dd>
           </div>
         ))}
       </dl>
     )
   }
-  return <span className="text-sm text-slate-300">{formatScalar(value)}</span>
+  return <span className="text-sm text-stone-300">{formatScalar(value)}</span>
 }
 
 function formatScalar(v: any): string {

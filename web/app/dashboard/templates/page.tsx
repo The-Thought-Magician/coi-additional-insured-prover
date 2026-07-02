@@ -180,7 +180,7 @@ export default function TemplatesPage() {
               {c.label}
             </Badge>
           ))}
-        {chips.every((c) => !c.on) && <span className="text-slate-600">none</span>}
+        {chips.every((c) => !c.on) && <span className="text-stone-600">none</span>}
       </div>
     )
   }
@@ -190,7 +190,7 @@ export default function TemplatesPage() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Requirement Templates</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Versioned insurance requirement sets applied to projects and certificates for grading.
           </p>
         </div>
@@ -217,12 +217,12 @@ export default function TemplatesPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search templates..."
-            className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none sm:max-w-xs"
+            className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none sm:max-w-xs"
           />
           <select
             value={tierFilter}
             onChange={(e) => setTierFilter(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+            className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
           >
             {RISK_TIERS.map((t) => (
               <option key={t || 'all'} value={t}>
@@ -230,16 +230,16 @@ export default function TemplatesPage() {
               </option>
             ))}
           </select>
-          <label className="flex items-center gap-2 text-sm text-slate-300">
+          <label className="flex items-center gap-2 text-sm text-stone-300">
             <input
               type="checkbox"
               checked={activeOnly}
               onChange={(e) => setActiveOnly(e.target.checked)}
-              className="h-4 w-4 rounded border-slate-600 bg-slate-950 accent-amber-500"
+              className="h-4 w-4 rounded border-stone-600 bg-stone-950 accent-cyan-500"
             />
             Active only
           </label>
-          <span className="text-xs text-slate-500 sm:ml-auto">
+          <span className="text-xs text-stone-500 sm:ml-auto">
             {filtered.length} of {templates.length}
           </span>
         </CardBody>
@@ -295,12 +295,12 @@ export default function TemplatesPage() {
                 <TD>
                   <Link
                     href={`/dashboard/templates/${t.id}`}
-                    className="font-medium text-amber-400 hover:text-amber-300"
+                    className="font-medium text-cyan-400 hover:text-cyan-300"
                   >
                     {t.name}
                   </Link>
                   {t.description && (
-                    <div className="mt-0.5 max-w-sm truncate text-xs text-slate-500">{t.description}</div>
+                    <div className="mt-0.5 max-w-sm truncate text-xs text-stone-500">{t.description}</div>
                   )}
                 </TD>
                 <TD>
@@ -312,7 +312,7 @@ export default function TemplatesPage() {
                 <TD>
                   <Badge tone={t.is_active ? 'success' : 'neutral'}>{t.is_active ? 'active' : 'inactive'}</Badge>
                 </TD>
-                <TD className="text-slate-500">{fmtDate(t.created_at)}</TD>
+                <TD className="text-stone-500">{fmtDate(t.created_at)}</TD>
                 <TD className="text-right">
                   <div className="flex justify-end gap-2">
                     <Link href={`/dashboard/templates/${t.id}`}>
@@ -357,18 +357,18 @@ export default function TemplatesPage() {
             </div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Name
             </label>
             <input
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               placeholder="e.g. Standard Subcontractor — GL/Auto/Umbrella"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Description
             </label>
             <textarea
@@ -376,18 +376,18 @@ export default function TemplatesPage() {
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={2}
               placeholder="When this template applies..."
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Risk Tier
               </label>
               <select
                 value={form.applies_to_risk_tier}
                 onChange={(e) => setForm({ ...form, applies_to_risk_tier: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 {RISK_TIERS.map((t) => (
                   <option key={t || 'any'} value={t}>
@@ -397,19 +397,19 @@ export default function TemplatesPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Min A.M. Best
               </label>
               <input
                 value={form.min_carrier_am_best}
                 onChange={(e) => setForm({ ...form, min_carrier_am_best: e.target.value })}
                 placeholder="A-"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
-          <fieldset className="rounded-lg border border-slate-800 p-3">
-            <legend className="px-1 text-xs font-medium uppercase tracking-wide text-slate-500">
+          <fieldset className="rounded-lg border border-stone-800 p-3">
+            <legend className="px-1 text-xs font-medium uppercase tracking-wide text-stone-500">
               Endorsement Requirements
             </legend>
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
@@ -420,19 +420,19 @@ export default function TemplatesPage() {
                 ['require_pnc', 'Primary & Non-Contributory'],
                 ['require_waiver_subrogation', 'Waiver of Subrogation'],
               ] as const).map(([key, label]) => (
-                <label key={key} className="flex items-center gap-2 text-sm text-slate-300">
+                <label key={key} className="flex items-center gap-2 text-sm text-stone-300">
                   <input
                     type="checkbox"
                     checked={(form as any)[key]}
                     onChange={(e) => setForm({ ...form, [key]: e.target.checked })}
-                    className="h-4 w-4 rounded border-slate-600 bg-slate-950 accent-amber-500"
+                    className="h-4 w-4 rounded border-stone-600 bg-stone-950 accent-cyan-500"
                   />
                   {label}
                 </label>
               ))}
             </div>
           </fieldset>
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-stone-500">
             Per-coverage minimum limits are configured in the template editor after creation.
           </p>
         </form>
@@ -453,7 +453,7 @@ export default function TemplatesPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-300">
           Delete template <span className="font-semibold text-white">{deleting?.name}</span>? Projects using this
           template will lose their requirement linkage. This cannot be undone.
         </p>

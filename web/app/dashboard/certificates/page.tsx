@@ -178,7 +178,7 @@ export default function CertificatesPage() {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Certificates of Insurance</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             ACORD 25 certificates with additional-insured grading and compliance status.
           </p>
         </div>
@@ -198,20 +198,20 @@ export default function CertificatesPage() {
       <Card>
         <CardBody className="flex flex-wrap items-end gap-3">
           <div className="flex-1 min-w-[200px]">
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Search</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Search</label>
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Insured, producer, holder, vendor…"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div className="min-w-[160px]">
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Vendor</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Vendor</label>
             <select
               value={vendorFilter}
               onChange={(e) => setVendorFilter(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All vendors</option>
               {vendors.map((v) => (
@@ -222,11 +222,11 @@ export default function CertificatesPage() {
             </select>
           </div>
           <div className="min-w-[160px]">
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Project</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Project</label>
             <select
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="">All projects</option>
               {projects.map((p) => (
@@ -237,11 +237,11 @@ export default function CertificatesPage() {
             </select>
           </div>
           <div className="min-w-[160px]">
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Compliance</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Compliance</label>
             <select
               value={complianceFilter}
               onChange={(e) => setComplianceFilter(e.target.value)}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               {COMPLIANCE_FILTERS.map((f) => (
                 <option key={f.value} value={f.value}>
@@ -271,8 +271,8 @@ export default function CertificatesPage() {
       )}
 
       {selected.size > 0 && (
-        <div className="flex items-center justify-between rounded-lg border border-amber-500/30 bg-amber-500/10 px-4 py-3">
-          <span className="text-sm text-amber-200">{selected.size} selected</span>
+        <div className="flex items-center justify-between rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-4 py-3">
+          <span className="text-sm text-cyan-200">{selected.size} selected</span>
           <div className="flex gap-2">
             <Button variant="ghost" onClick={() => setSelected(new Set())}>
               Clear selection
@@ -312,7 +312,7 @@ export default function CertificatesPage() {
                   type="checkbox"
                   checked={selected.size === filtered.length && filtered.length > 0}
                   onChange={toggleAll}
-                  className="accent-amber-500"
+                  className="accent-cyan-500"
                   aria-label="Select all"
                 />
               </TH>
@@ -334,22 +334,22 @@ export default function CertificatesPage() {
                     type="checkbox"
                     checked={selected.has(c.id)}
                     onChange={() => toggle(c.id)}
-                    className="accent-amber-500"
+                    className="accent-cyan-500"
                     aria-label={`Select ${c.insured_name || c.id}`}
                   />
                 </TD>
                 <TD>
-                  <Link href={`/dashboard/certificates/${c.id}`} className="font-medium text-amber-300 hover:text-amber-200">
+                  <Link href={`/dashboard/certificates/${c.id}`} className="font-medium text-cyan-300 hover:text-cyan-200">
                     {c.insured_name || 'Untitled certificate'}
                   </Link>
-                  {c.source && <div className="text-xs text-slate-500">{c.source}</div>}
+                  {c.source && <div className="text-xs text-stone-500">{c.source}</div>}
                 </TD>
                 <TD>{vendorName(c.vendor_id)}</TD>
                 <TD>{projectName(c.project_id)}</TD>
                 <TD>{c.producer || '—'}</TD>
                 <TD>{fmtDate(c.issue_date)}</TD>
                 <TD>
-                  {c.status ? <Badge tone={toneForStatus(c.status)}>{c.status}</Badge> : <span className="text-slate-600">—</span>}
+                  {c.status ? <Badge tone={toneForStatus(c.status)}>{c.status}</Badge> : <span className="text-stone-600">—</span>}
                 </TD>
                 <TD>
                   {c.compliance_status ? (
@@ -391,7 +391,7 @@ export default function CertificatesPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-300">
           Delete certificate for <span className="font-semibold text-white">{deleteTarget?.insured_name || 'this vendor'}</span>?
           This removes its coverage lines, endorsements, and gradings. This cannot be undone.
         </p>
@@ -412,7 +412,7 @@ export default function CertificatesPage() {
           </>
         }
       >
-        <p className="text-sm text-slate-300">
+        <p className="text-sm text-stone-300">
           Permanently delete {selected.size} certificate{selected.size === 1 ? '' : 's'} and all their child records? This
           cannot be undone.
         </p>

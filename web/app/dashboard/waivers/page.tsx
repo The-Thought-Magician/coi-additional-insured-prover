@@ -123,7 +123,7 @@ export default function WaiversPage() {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Waivers &amp; Exceptions</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Documented exceptions that suppress an open deficiency. Revoking a waiver reopens the underlying deficiency.
           </p>
         </div>
@@ -158,15 +158,15 @@ export default function WaiversPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search justification, waived by..."
-              className="min-w-[200px] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="min-w-[200px] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
-            <div className="flex gap-1 rounded-lg border border-slate-700 bg-slate-950 p-1">
+            <div className="flex gap-1 rounded-lg border border-stone-700 bg-stone-950 p-1">
               {(['all', 'active', 'expiring', 'expired'] as const).map((f) => (
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
                   className={`rounded px-3 py-1.5 text-sm font-medium capitalize transition-colors ${
-                    filter === f ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-white'
+                    filter === f ? 'bg-cyan-500 text-stone-950' : 'text-stone-400 hover:text-white'
                   }`}
                 >
                   {f}
@@ -207,18 +207,18 @@ export default function WaiversPage() {
           <TBody>
             {filtered.map((w) => (
               <TR key={w.id}>
-                <TD className="font-mono text-xs text-slate-400">
+                <TD className="font-mono text-xs text-stone-400">
                   {w.deficiency_id ? w.deficiency_id.slice(0, 8) : '—'}
                 </TD>
-                <TD className="max-w-md text-slate-200">
+                <TD className="max-w-md text-stone-200">
                   <span className="line-clamp-2" title={w.justification ?? ''}>
-                    {w.justification || <span className="text-slate-600">No justification recorded</span>}
+                    {w.justification || <span className="text-stone-600">No justification recorded</span>}
                   </span>
                 </TD>
-                <TD className="font-mono text-xs text-slate-400">
+                <TD className="font-mono text-xs text-stone-400">
                   {w.waived_by ? w.waived_by.slice(0, 8) : '—'}
                 </TD>
-                <TD className="text-slate-400">{fmtDate(w.created_at)}</TD>
+                <TD className="text-stone-400">{fmtDate(w.created_at)}</TD>
                 <TD>{expiryBadge(w)}</TD>
                 <TD className="text-right">
                   <Button

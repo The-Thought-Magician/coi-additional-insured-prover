@@ -233,7 +233,7 @@ export default function TasksPage() {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Task Workbench</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Follow-ups, COI requests, and remediation work tied to vendors and projects.
           </p>
         </div>
@@ -250,13 +250,13 @@ export default function TasksPage() {
       <Card>
         <CardBody>
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex gap-1 rounded-lg border border-slate-700 bg-slate-950 p-1">
+            <div className="flex gap-1 rounded-lg border border-stone-700 bg-stone-950 p-1">
               {(['all', 'mine', 'overdue'] as const).map((s) => (
                 <button
                   key={s}
                   onClick={() => setScope(s)}
                   className={`rounded px-3 py-1.5 text-sm font-medium capitalize transition-colors ${
-                    scope === s ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-white'
+                    scope === s ? 'bg-cyan-500 text-stone-950' : 'text-stone-400 hover:text-white'
                   }`}
                 >
                   {s === 'all' ? 'All Tasks' : s}
@@ -266,7 +266,7 @@ export default function TasksPage() {
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as any)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="open">Open &amp; in progress</option>
               <option value="completed">Completed</option>
@@ -276,7 +276,7 @@ export default function TasksPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search tasks..."
-              className="min-w-[180px] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="min-w-[180px] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </CardBody>
@@ -316,16 +316,16 @@ export default function TasksPage() {
               return (
                 <TR key={t.id}>
                   <TD>
-                    <div className={`font-medium ${done ? 'text-slate-500 line-through' : 'text-slate-100'}`}>{t.title}</div>
-                    {t.description && <div className="mt-0.5 line-clamp-1 text-xs text-slate-500">{t.description}</div>}
+                    <div className={`font-medium ${done ? 'text-stone-500 line-through' : 'text-stone-100'}`}>{t.title}</div>
+                    {t.description && <div className="mt-0.5 line-clamp-1 text-xs text-stone-500">{t.description}</div>}
                   </TD>
                   <TD>
-                    <span className="text-xs capitalize text-slate-400">{(t.task_type || 'general').replace(/_/g, ' ')}</span>
+                    <span className="text-xs capitalize text-stone-400">{(t.task_type || 'general').replace(/_/g, ' ')}</span>
                   </TD>
-                  <TD className="text-xs text-slate-400">
+                  <TD className="text-xs text-stone-400">
                     {vendorName(t.vendor_id) && <div>🏢 {vendorName(t.vendor_id)}</div>}
                     {projectName(t.project_id) && <div>📋 {projectName(t.project_id)}</div>}
-                    {!t.vendor_id && !t.project_id && <span className="text-slate-600">—</span>}
+                    {!t.vendor_id && !t.project_id && <span className="text-stone-600">—</span>}
                   </TD>
                   <TD>
                     {t.due_date ? (
@@ -334,7 +334,7 @@ export default function TasksPage() {
                         {fmtDate(t.due_date)}
                       </Badge>
                     ) : (
-                      <span className="text-slate-600">—</span>
+                      <span className="text-stone-600">—</span>
                     )}
                   </TD>
                   <TD>
@@ -398,30 +398,30 @@ export default function TasksPage() {
             <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</div>
           )}
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Title *</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Title *</label>
             <input
               value={form.title}
               onChange={(e) => setForm({ ...form, title: e.target.value })}
               placeholder="e.g. Request updated AI endorsement from ACME Electric"
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Description</label>
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Description</label>
             <textarea
               value={form.description}
               onChange={(e) => setForm({ ...form, description: e.target.value })}
               rows={3}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Type</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Type</label>
               <select
                 value={form.task_type}
                 onChange={(e) => setForm({ ...form, task_type: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 {TASK_TYPES.map((tt) => (
                   <option key={tt} value={tt}>
@@ -431,22 +431,22 @@ export default function TasksPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Due Date</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Due Date</label>
               <input
                 type="date"
                 value={form.due_date}
                 onChange={(e) => setForm({ ...form, due_date: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Vendor</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Vendor</label>
               <select
                 value={form.vendor_id}
                 onChange={(e) => setForm({ ...form, vendor_id: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">— None —</option>
                 {vendors.map((v) => (
@@ -457,11 +457,11 @@ export default function TasksPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Project</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Project</label>
               <select
                 value={form.project_id}
                 onChange={(e) => setForm({ ...form, project_id: e.target.value })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">— None —</option>
                 {projects.map((p) => (

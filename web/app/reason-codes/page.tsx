@@ -65,21 +65,21 @@ export default function ReasonCodesPage() {
   }, [codes, search, severity])
 
   return (
-    <main className="min-h-screen bg-slate-950 text-white">
-      <nav className="flex items-center justify-between border-b border-slate-800 px-6 py-4">
-        <Link href="/" className="text-lg font-bold text-amber-400">CoiAdditionalInsuredProver</Link>
+    <main className="min-h-screen bg-stone-950 text-white">
+      <nav className="flex items-center justify-between border-b border-stone-800 px-6 py-4">
+        <Link href="/" className="text-lg font-bold text-cyan-400">CoiAdditionalInsuredProver</Link>
         <div className="flex items-center gap-4">
-          <Link href="/pricing" className="hidden text-slate-300 hover:text-white sm:inline">Pricing</Link>
-          <Link href="/auth/sign-in" className="text-slate-300 hover:text-white">Sign In</Link>
-          <Link href="/auth/sign-up" className="rounded-lg bg-amber-500 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-400">Get Started</Link>
+          <Link href="/pricing" className="hidden text-stone-300 hover:text-white sm:inline">Pricing</Link>
+          <Link href="/auth/sign-in" className="text-stone-300 hover:text-white">Sign In</Link>
+          <Link href="/auth/sign-up" className="rounded-lg bg-cyan-500 px-4 py-2 font-semibold text-stone-950 hover:bg-cyan-400">Get Started</Link>
         </div>
       </nav>
 
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="max-w-3xl">
-          <p className="text-xs font-semibold uppercase tracking-widest text-amber-400">Reference Catalog</p>
+          <p className="text-xs font-semibold uppercase tracking-widest text-cyan-400">Reference Catalog</p>
           <h1 className="mt-2 text-4xl font-black sm:text-5xl">Deficiency Reason Codes</h1>
-          <p className="mt-4 text-slate-400">
+          <p className="mt-4 text-stone-400">
             Every certificate is graded against the contract requirement template. When a coverage line, endorsement,
             or limit falls short, the grading engine emits one of these explainable reason codes, linked to the exact
             field that triggered it. This catalog documents what each code means and how to remediate it.
@@ -92,13 +92,13 @@ export default function ReasonCodesPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search by code, title, or description…"
-              className="w-full rounded-lg border border-slate-800 bg-slate-900 px-4 py-2.5 text-sm text-white placeholder:text-slate-500 focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
+              className="w-full rounded-lg border border-stone-800 bg-stone-900 px-4 py-2.5 text-sm text-white placeholder:text-stone-500 focus:border-cyan-500/60 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
             />
           </div>
           <select
             value={severity}
             onChange={(e) => setSeverity(e.target.value)}
-            className="rounded-lg border border-slate-800 bg-slate-900 px-4 py-2.5 text-sm text-white focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/30"
+            className="rounded-lg border border-stone-800 bg-stone-900 px-4 py-2.5 text-sm text-white focus:border-cyan-500/60 focus:outline-none focus:ring-2 focus:ring-cyan-500/30"
           >
             <option value="all">All severities</option>
             {severities.map((s) => (
@@ -108,7 +108,7 @@ export default function ReasonCodesPage() {
         </div>
 
         {!loading && !error && (
-          <p className="mt-4 text-sm text-slate-500">
+          <p className="mt-4 text-sm text-stone-500">
             {filtered.length} of {codes.length} {codes.length === 1 ? 'code' : 'codes'}
           </p>
         )}
@@ -131,19 +131,19 @@ export default function ReasonCodesPage() {
           ) : (
             <div className="grid gap-4 md:grid-cols-2">
               {filtered.map((c) => (
-                <article key={c.id} className="flex flex-col rounded-xl border border-slate-800 bg-slate-900 p-5">
+                <article key={c.id} className="flex flex-col rounded-xl border border-stone-800 bg-stone-900 p-5">
                   <div className="flex items-start justify-between gap-3">
-                    <code className="rounded-md bg-slate-800 px-2 py-1 font-mono text-sm font-semibold text-amber-300">{c.id}</code>
+                    <code className="rounded-md bg-stone-800 px-2 py-1 font-mono text-sm font-semibold text-cyan-300">{c.id}</code>
                     {c.default_severity && (
                       <Badge tone={severityTone(c.default_severity)}>{c.default_severity}</Badge>
                     )}
                   </div>
                   <h2 className="mt-3 text-lg font-semibold text-white">{c.title}</h2>
-                  <p className="mt-2 flex-1 text-sm text-slate-400">{c.description}</p>
+                  <p className="mt-2 flex-1 text-sm text-stone-400">{c.description}</p>
                   {c.remediation && (
                     <div className="mt-4 rounded-lg border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
                       <div className="text-xs font-semibold uppercase tracking-wide text-emerald-400">Remediation</div>
-                      <p className="mt-1 text-sm text-slate-300">{c.remediation}</p>
+                      <p className="mt-1 text-sm text-stone-300">{c.remediation}</p>
                     </div>
                   )}
                 </article>

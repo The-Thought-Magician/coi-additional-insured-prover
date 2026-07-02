@@ -163,7 +163,7 @@ export default function ActivityPage() {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Activity Log</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Immutable audit trail of every action taken across vendors, projects, certificates, and compliance records.
           </p>
         </div>
@@ -181,11 +181,11 @@ export default function ActivityPage() {
         <CardBody className="space-y-3">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Entity type</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Entity type</label>
               <select
                 value={entityType}
                 onChange={(e) => setEntityType(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 <option value="">All entities</option>
                 {entityOptions.map((t) => (
@@ -196,13 +196,13 @@ export default function ActivityPage() {
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Actor</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Actor</label>
               <input
                 value={actor}
                 onChange={(e) => setActor(e.target.value)}
                 list="activity-actors"
                 placeholder="Actor / user id"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
               />
               <datalist id="activity-actors">
                 {actorOptions.map((a) => (
@@ -211,12 +211,12 @@ export default function ActivityPage() {
               </datalist>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">From date</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">From date</label>
               <input
                 type="date"
                 value={dateFrom}
                 onChange={(e) => setDateFrom(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div className="flex items-end gap-2">
@@ -224,11 +224,11 @@ export default function ActivityPage() {
               <Button variant="secondary" onClick={() => { resetFilters(); setTimeout(load, 0) }}>Clear</Button>
             </div>
           </div>
-          <div className="flex flex-wrap items-center gap-3 border-t border-slate-800 pt-3">
+          <div className="flex flex-wrap items-center gap-3 border-t border-stone-800 pt-3">
             <select
               value={actionFilter}
               onChange={(e) => setActionFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="all">All actions</option>
               {actionOptions.map((a) => (
@@ -241,7 +241,7 @@ export default function ActivityPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search this page (action, id, metadata)..."
-              className="min-w-[200px] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="min-w-[200px] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </CardBody>
@@ -271,9 +271,9 @@ export default function ActivityPage() {
           {grouped.map(([day, items]) => (
             <div key={day} className="space-y-2">
               <div className="flex items-center gap-3">
-                <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">{day}</h2>
-                <span className="text-xs text-slate-600">{items.length} event{items.length === 1 ? '' : 's'}</span>
-                <div className="h-px flex-1 bg-slate-800" />
+                <h2 className="text-sm font-semibold uppercase tracking-wide text-stone-400">{day}</h2>
+                <span className="text-xs text-stone-600">{items.length} event{items.length === 1 ? '' : 's'}</span>
+                <div className="h-px flex-1 bg-stone-800" />
               </div>
               <Table>
                 <THead>
@@ -289,7 +289,7 @@ export default function ActivityPage() {
                 <TBody>
                   {items.map((l) => (
                     <TR key={l.id}>
-                      <TD className="whitespace-nowrap text-slate-400">{fmtTime(l.created_at)}</TD>
+                      <TD className="whitespace-nowrap text-stone-400">{fmtTime(l.created_at)}</TD>
                       <TD>
                         <Badge tone={actionTone(l.action)}>{humanize(l.action)}</Badge>
                       </TD>
@@ -297,20 +297,20 @@ export default function ActivityPage() {
                         {l.entity_type ? (
                           <Badge tone={entityTone(l.entity_type)}>{humanize(l.entity_type)}</Badge>
                         ) : (
-                          <span className="text-slate-600">—</span>
+                          <span className="text-stone-600">—</span>
                         )}
                       </TD>
-                      <TD className="font-mono text-xs text-slate-400">{shortId(l.entity_id)}</TD>
-                      <TD className="font-mono text-xs text-slate-400">{shortId(l.actor_id)}</TD>
+                      <TD className="font-mono text-xs text-stone-400">{shortId(l.entity_id)}</TD>
+                      <TD className="font-mono text-xs text-stone-400">{shortId(l.actor_id)}</TD>
                       <TD className="max-w-xs">
                         {l.metadata && Object.keys(l.metadata).length > 0 ? (
-                          <code className="block truncate text-xs text-slate-500" title={JSON.stringify(l.metadata)}>
+                          <code className="block truncate text-xs text-stone-500" title={JSON.stringify(l.metadata)}>
                             {Object.entries(l.metadata)
                               .map(([k, v]) => `${k}: ${typeof v === 'object' ? JSON.stringify(v) : v}`)
                               .join(', ')}
                           </code>
                         ) : (
-                          <span className="text-slate-600">—</span>
+                          <span className="text-stone-600">—</span>
                         )}
                       </TD>
                     </TR>

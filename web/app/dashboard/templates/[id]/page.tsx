@@ -212,7 +212,7 @@ export default function TemplateEditorPage() {
   if (error && !template) {
     return (
       <div className="space-y-4">
-        <Link href="/dashboard/templates" className="text-sm text-amber-400 hover:text-amber-300">
+        <Link href="/dashboard/templates" className="text-sm text-cyan-400 hover:text-cyan-300">
           ← Back to templates
         </Link>
         <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-300">
@@ -236,7 +236,7 @@ export default function TemplateEditorPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <Link href="/dashboard/templates" className="text-sm text-amber-400 hover:text-amber-300">
+          <Link href="/dashboard/templates" className="text-sm text-cyan-400 hover:text-cyan-300">
             ← Back to templates
           </Link>
           <h1 className="mt-1 flex items-center gap-3 text-2xl font-bold text-white">
@@ -262,28 +262,28 @@ export default function TemplateEditorPage() {
         <CardHeader className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Template Details & Endorsement Flags</h2>
-            <p className="text-xs text-slate-500">Saving bumps the template version.</p>
+            <p className="text-xs text-stone-500">Saving bumps the template version.</p>
           </div>
           {headerNote && <span className="text-xs text-emerald-400">{headerNote}</span>}
         </CardHeader>
         <CardBody className="space-y-5">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Name</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Name</label>
               <input
                 value={template.name}
                 onChange={(e) => patchTemplate('name', e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Risk Tier
               </label>
               <select
                 value={template.applies_to_risk_tier || ''}
                 onChange={(e) => patchTemplate('applies_to_risk_tier', e.target.value || null)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               >
                 {RISK_TIERS.map((t) => (
                   <option key={t || 'any'} value={t}>
@@ -295,61 +295,61 @@ export default function TemplateEditorPage() {
           </div>
 
           <div>
-            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+            <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
               Description
             </label>
             <textarea
               value={template.description ?? ''}
               onChange={(e) => patchTemplate('description', e.target.value)}
               rows={2}
-              className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             />
           </div>
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Minimum Carrier A.M. Best Rating
               </label>
               <input
                 value={template.min_carrier_am_best ?? ''}
                 onChange={(e) => patchTemplate('min_carrier_am_best', e.target.value || null)}
                 placeholder="A-"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div className="flex items-end">
-              <label className="flex items-center gap-2 text-sm text-slate-300">
+              <label className="flex items-center gap-2 text-sm text-stone-300">
                 <input
                   type="checkbox"
                   checked={!!template.is_active}
                   onChange={(e) => patchTemplate('is_active', e.target.checked)}
-                  className="h-4 w-4 rounded border-slate-600 bg-slate-950 accent-amber-500"
+                  className="h-4 w-4 rounded border-stone-600 bg-stone-950 accent-cyan-500"
                 />
                 Active (available for assignment)
               </label>
             </div>
           </div>
 
-          <div className="rounded-lg border border-slate-800 bg-slate-950/40 p-4">
-            <h3 className="mb-3 text-xs font-medium uppercase tracking-wide text-slate-500">
+          <div className="rounded-lg border border-stone-800 bg-stone-950/40 p-4">
+            <h3 className="mb-3 text-xs font-medium uppercase tracking-wide text-stone-500">
               Additional Insured / P&NC / Waiver Flags
             </h3>
             <div className="space-y-2">
               {flags.map((f) => (
                 <label
                   key={String(f.key)}
-                  className="flex items-start gap-3 rounded-lg border border-transparent px-2 py-1.5 hover:border-slate-800 hover:bg-slate-900/60"
+                  className="flex items-start gap-3 rounded-lg border border-transparent px-2 py-1.5 hover:border-stone-800 hover:bg-stone-900/60"
                 >
                   <input
                     type="checkbox"
                     checked={!!template[f.key]}
                     onChange={(e) => patchTemplate(f.key, e.target.checked as any)}
-                    className="mt-0.5 h-4 w-4 rounded border-slate-600 bg-slate-950 accent-amber-500"
+                    className="mt-0.5 h-4 w-4 rounded border-stone-600 bg-stone-950 accent-cyan-500"
                   />
                   <span>
-                    <span className="block text-sm font-medium text-slate-200">{f.label}</span>
-                    <span className="block text-xs text-slate-500">{f.hint}</span>
+                    <span className="block text-sm font-medium text-stone-200">{f.label}</span>
+                    <span className="block text-xs text-stone-500">{f.hint}</span>
                   </span>
                 </label>
               ))}
@@ -368,7 +368,7 @@ export default function TemplateEditorPage() {
         <CardHeader className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Per-Line Minimum Limits</h2>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-stone-500">
               Required coverage types and their minimum each-occurrence / aggregate limits.
             </p>
           </div>
@@ -376,7 +376,7 @@ export default function TemplateEditorPage() {
         </CardHeader>
         <CardBody className="space-y-4">
           {lines.length === 0 ? (
-            <p className="rounded-lg border border-dashed border-slate-800 bg-slate-950/40 px-4 py-6 text-center text-sm text-slate-500">
+            <p className="rounded-lg border border-dashed border-stone-800 bg-stone-950/40 px-4 py-6 text-center text-sm text-stone-500">
               No line requirements yet. Add a coverage type to set its minimum limits.
             </p>
           ) : (
@@ -398,7 +398,7 @@ export default function TemplateEditorPage() {
                       <select
                         value={l.coverage_type}
                         onChange={(e) => updateLine(idx, { coverage_type: e.target.value })}
-                        className="w-full rounded-lg border border-slate-700 bg-slate-950 px-2 py-1.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                        className="w-full rounded-lg border border-stone-700 bg-stone-950 px-2 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                       >
                         {COVERAGE_TYPES.map((c) => (
                           <option key={c} value={c}>
@@ -413,30 +413,30 @@ export default function TemplateEditorPage() {
                           type="checkbox"
                           checked={l.required}
                           onChange={(e) => updateLine(idx, { required: e.target.checked })}
-                          className="h-4 w-4 rounded border-slate-600 bg-slate-950 accent-amber-500"
+                          className="h-4 w-4 rounded border-stone-600 bg-stone-950 accent-cyan-500"
                         />
-                        <span className="text-xs text-slate-400">{l.required ? 'required' : 'optional'}</span>
+                        <span className="text-xs text-stone-400">{l.required ? 'required' : 'optional'}</span>
                       </label>
                     </TD>
                     <TD>
                       <div className="flex items-center gap-1">
-                        <span className="text-slate-500">$</span>
+                        <span className="text-stone-500">$</span>
                         <input
                           value={fmtMoney(l.min_each_occurrence)}
                           onChange={(e) => updateLine(idx, { min_each_occurrence: parseMoney(e.target.value) })}
                           placeholder="1,000,000"
-                          className="w-32 rounded-lg border border-slate-700 bg-slate-950 px-2 py-1.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                          className="w-32 rounded-lg border border-stone-700 bg-stone-950 px-2 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                         />
                       </div>
                     </TD>
                     <TD>
                       <div className="flex items-center gap-1">
-                        <span className="text-slate-500">$</span>
+                        <span className="text-stone-500">$</span>
                         <input
                           value={fmtMoney(l.min_aggregate)}
                           onChange={(e) => updateLine(idx, { min_aggregate: parseMoney(e.target.value) })}
                           placeholder="2,000,000"
-                          className="w-32 rounded-lg border border-slate-700 bg-slate-950 px-2 py-1.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                          className="w-32 rounded-lg border border-stone-700 bg-stone-950 px-2 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                         />
                       </div>
                     </TD>
@@ -445,7 +445,7 @@ export default function TemplateEditorPage() {
                         value={l.notes ?? ''}
                         onChange={(e) => updateLine(idx, { notes: e.target.value || null })}
                         placeholder="optional"
-                        className="w-full rounded-lg border border-slate-700 bg-slate-950 px-2 py-1.5 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                        className="w-full rounded-lg border border-stone-700 bg-stone-950 px-2 py-1.5 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                       />
                     </TD>
                     <TD className="text-right">

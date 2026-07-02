@@ -320,7 +320,7 @@ export default function SettingsPage() {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Settings</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Manage your workspace defaults, team members, sample data, and subscription.
           </p>
         </div>
@@ -354,7 +354,7 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <h2 className="text-lg font-semibold text-white">Workspace</h2>
-            <p className="mt-1 text-sm text-slate-400">
+            <p className="mt-1 text-sm text-stone-400">
               Defaults applied when grading certificates and building requirement templates.
             </p>
           </CardHeader>
@@ -369,18 +369,18 @@ export default function SettingsPage() {
             )}
 
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Workspace Name *</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Workspace Name *</label>
               <input
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="e.g. Northgate Construction Group"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
               />
             </div>
 
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Default GL Each Occurrence</label>
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Default GL Each Occurrence</label>
                 <input
                   type="number"
                   min={0}
@@ -388,12 +388,12 @@ export default function SettingsPage() {
                   value={form.default_gl_each_occurrence}
                   onChange={(e) => setForm({ ...form, default_gl_each_occurrence: e.target.value })}
                   placeholder="1000000"
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
-                <p className="mt-1 text-xs text-slate-500">Current: {limit(workspace.default_gl_each_occurrence)}</p>
+                <p className="mt-1 text-xs text-stone-500">Current: {limit(workspace.default_gl_each_occurrence)}</p>
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Default GL Aggregate</label>
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Default GL Aggregate</label>
                 <input
                   type="number"
                   min={0}
@@ -401,18 +401,18 @@ export default function SettingsPage() {
                   value={form.default_gl_aggregate}
                   onChange={(e) => setForm({ ...form, default_gl_aggregate: e.target.value })}
                   placeholder="2000000"
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
                 />
-                <p className="mt-1 text-xs text-slate-500">Current: {limit(workspace.default_gl_aggregate)}</p>
+                <p className="mt-1 text-xs text-stone-500">Current: {limit(workspace.default_gl_aggregate)}</p>
               </div>
             </div>
 
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">Fiscal Year Start Month</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">Fiscal Year Start Month</label>
               <select
                 value={form.fiscal_year_start_month}
                 onChange={(e) => setForm({ ...form, fiscal_year_start_month: Number(e.target.value) })}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none sm:max-w-xs"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none sm:max-w-xs"
               >
                 {MONTHS.map((m, i) => (
                   <option key={m} value={i + 1}>{m}</option>
@@ -421,28 +421,28 @@ export default function SettingsPage() {
             </div>
 
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-              <label className="flex items-start gap-2 rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-3 text-sm text-slate-300">
+              <label className="flex items-start gap-2 rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-3 text-sm text-stone-300">
                 <input
                   type="checkbox"
                   checked={form.require_pnc_default}
                   onChange={(e) => setForm({ ...form, require_pnc_default: e.target.checked })}
-                  className="mt-0.5 h-4 w-4 rounded border-slate-600 bg-slate-950 text-amber-500 focus:ring-amber-500"
+                  className="mt-0.5 h-4 w-4 rounded border-stone-600 bg-stone-950 text-cyan-500 focus:ring-cyan-500"
                 />
                 <span>
-                  <span className="font-medium text-slate-200">Require Primary &amp; Non-Contributory by default</span>
-                  <span className="mt-0.5 block text-xs text-slate-500">New templates inherit the P&amp;NC requirement.</span>
+                  <span className="font-medium text-stone-200">Require Primary &amp; Non-Contributory by default</span>
+                  <span className="mt-0.5 block text-xs text-stone-500">New templates inherit the P&amp;NC requirement.</span>
                 </span>
               </label>
-              <label className="flex items-start gap-2 rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-3 text-sm text-slate-300">
+              <label className="flex items-start gap-2 rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-3 text-sm text-stone-300">
                 <input
                   type="checkbox"
                   checked={form.require_waiver_default}
                   onChange={(e) => setForm({ ...form, require_waiver_default: e.target.checked })}
-                  className="mt-0.5 h-4 w-4 rounded border-slate-600 bg-slate-950 text-amber-500 focus:ring-amber-500"
+                  className="mt-0.5 h-4 w-4 rounded border-stone-600 bg-stone-950 text-cyan-500 focus:ring-cyan-500"
                 />
                 <span>
-                  <span className="font-medium text-slate-200">Require Waiver of Subrogation by default</span>
-                  <span className="mt-0.5 block text-xs text-slate-500">New templates inherit the waiver requirement.</span>
+                  <span className="font-medium text-stone-200">Require Waiver of Subrogation by default</span>
+                  <span className="mt-0.5 block text-xs text-stone-500">New templates inherit the waiver requirement.</span>
                 </span>
               </label>
             </div>
@@ -461,15 +461,15 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <h2 className="text-lg font-semibold text-white">Team Members</h2>
-            <p className="mt-1 text-sm text-slate-400">
+            <p className="mt-1 text-sm text-stone-400">
               Share the invite code so teammates can join this workspace.
             </p>
           </CardHeader>
           <CardBody className="space-y-5">
-            <div className="flex flex-wrap items-center gap-3 rounded-lg border border-amber-500/20 bg-amber-500/5 px-4 py-3">
+            <div className="flex flex-wrap items-center gap-3 rounded-lg border border-cyan-500/20 bg-cyan-500/5 px-4 py-3">
               <div className="flex-1">
-                <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Invite Code</div>
-                <div className="mt-1 font-mono text-lg font-semibold tracking-wider text-amber-300">
+                <div className="text-xs font-medium uppercase tracking-wide text-stone-500">Invite Code</div>
+                <div className="mt-1 font-mono text-lg font-semibold tracking-wider text-cyan-300">
                   {workspace.invite_code || '—'}
                 </div>
               </div>
@@ -492,11 +492,11 @@ export default function SettingsPage() {
                 <TBody>
                   {members.map((m) => (
                     <TR key={m.id}>
-                      <TD className="font-mono text-xs text-slate-300">{m.user_id}</TD>
+                      <TD className="font-mono text-xs text-stone-300">{m.user_id}</TD>
                       <TD>
                         <Badge tone={m.role === 'owner' ? 'amber' : toneForStatus(m.role)}>{m.role}</Badge>
                       </TD>
-                      <TD className="text-right text-slate-400">{shortDate(m.joined_at)}</TD>
+                      <TD className="text-right text-stone-400">{shortDate(m.joined_at)}</TD>
                     </TR>
                   ))}
                 </TBody>
@@ -510,7 +510,7 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <h2 className="text-lg font-semibold text-white">Create a Workspace</h2>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Start a new workspace for your organization. You will be the owner and can invite teammates afterward.
           </p>
         </CardHeader>
@@ -523,7 +523,7 @@ export default function SettingsPage() {
               value={newWsName}
               onChange={(e) => setNewWsName(e.target.value)}
               placeholder="Workspace name (e.g. Acme Construction)"
-              className="min-w-[220px] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="min-w-[220px] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
             <Button onClick={createWorkspace} disabled={creatingWs}>
               {creatingWs ? <Spinner /> : 'Create Workspace'}
@@ -536,7 +536,7 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <h2 className="text-lg font-semibold text-white">Join a Workspace</h2>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Enter an invite code to join an existing workspace as a member.
           </p>
         </CardHeader>
@@ -552,7 +552,7 @@ export default function SettingsPage() {
               value={joinCode}
               onChange={(e) => setJoinCode(e.target.value)}
               placeholder="Invite code"
-              className="min-w-[220px] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 font-mono text-sm uppercase tracking-wider text-slate-200 placeholder:text-slate-600 placeholder:normal-case focus:border-amber-500 focus:outline-none"
+              className="min-w-[220px] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 font-mono text-sm uppercase tracking-wider text-stone-200 placeholder:text-stone-600 placeholder:normal-case focus:border-cyan-500 focus:outline-none"
             />
             <Button onClick={joinWorkspace} disabled={joining}>
               {joining ? <Spinner /> : 'Join'}
@@ -565,7 +565,7 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <h2 className="text-lg font-semibold text-white">Sample Data</h2>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Load a realistic GC subcontractor portfolio — projects, vendors, templates, and certificates with mixed compliance — to explore the platform.
           </p>
         </CardHeader>
@@ -585,9 +585,9 @@ export default function SettingsPage() {
           {seedCounts.length > 0 && (
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
               {seedCounts.map(([k, v]) => (
-                <div key={k} className="rounded-lg border border-slate-800 bg-slate-950/40 px-3 py-2">
-                  <div className="text-xs uppercase tracking-wide text-slate-500">{k.replace(/_/g, ' ')}</div>
-                  <div className="mt-0.5 text-xl font-semibold text-slate-100">{v}</div>
+                <div key={k} className="rounded-lg border border-stone-800 bg-stone-950/40 px-3 py-2">
+                  <div className="text-xs uppercase tracking-wide text-stone-500">{k.replace(/_/g, ' ')}</div>
+                  <div className="mt-0.5 text-xl font-semibold text-stone-100">{v}</div>
                 </div>
               ))}
             </div>
@@ -599,7 +599,7 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <h2 className="text-lg font-semibold text-white">Billing &amp; Subscription</h2>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Manage your plan. {billing?.stripeEnabled === false ? 'Stripe is not configured on this deployment.' : 'Powered by Stripe.'}
           </p>
         </CardHeader>
@@ -608,13 +608,13 @@ export default function SettingsPage() {
             <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{billingError}</div>
           )}
 
-          <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-slate-800 bg-slate-950/40 px-4 py-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-lg border border-stone-800 bg-stone-950/40 px-4 py-4">
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-lg font-semibold text-white">{planName}</span>
                 <Badge tone={toneForStatus(subStatus)}>{subStatus}</Badge>
               </div>
-              <div className="mt-1 text-sm text-slate-400">
+              <div className="mt-1 text-sm text-stone-400">
                 {billing?.plan?.price_cents != null
                   ? `${dollars(billing.plan.price_cents)} / month`
                   : isPro
@@ -622,7 +622,7 @@ export default function SettingsPage() {
                     : 'Free tier'}
               </div>
               {billing?.subscription?.current_period_end && (
-                <div className="mt-1 text-xs text-slate-500">
+                <div className="mt-1 text-xs text-stone-500">
                   Renews {shortDate(billing.subscription.current_period_end)}
                 </div>
               )}
@@ -644,7 +644,7 @@ export default function SettingsPage() {
           </div>
 
           {billing?.stripeEnabled === false && (
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-stone-500">
               Checkout and the billing portal are disabled until Stripe environment variables are configured on the backend.
             </p>
           )}

@@ -196,7 +196,7 @@ export default function ReportsPage() {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Compliance Reports</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Portfolio-wide insurance compliance: vendor compliance rate, per-project rollups, and deficiency drivers.
           </p>
         </div>
@@ -248,14 +248,14 @@ export default function ReportsPage() {
             </CardHeader>
             <CardBody className="space-y-3">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-slate-400">Compliant vs total vendors</span>
-                <span className="font-semibold text-slate-200">{kpis.compliancePct}%</span>
+                <span className="text-stone-400">Compliant vs total vendors</span>
+                <span className="font-semibold text-stone-200">{kpis.compliancePct}%</span>
               </div>
-              <div className="flex h-4 w-full overflow-hidden rounded-full bg-slate-800" role="img" aria-label={`${kpis.compliancePct}% compliant`}>
+              <div className="flex h-4 w-full overflow-hidden rounded-full bg-stone-800" role="img" aria-label={`${kpis.compliancePct}% compliant`}>
                 <div className="bg-emerald-500" style={{ width: `${pct(kpis.compliantVendors, kpis.totalVendors)}%` }} title={`Compliant: ${kpis.compliantVendors}`} />
                 <div className="bg-red-500" style={{ width: `${pct(kpis.deficient, kpis.totalVendors)}%` }} title={`Deficient: ${kpis.deficient}`} />
               </div>
-              <div className="flex flex-wrap gap-4 text-xs text-slate-400">
+              <div className="flex flex-wrap gap-4 text-xs text-stone-400">
                 <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-emerald-500" /> Compliant ({kpis.compliantVendors})</span>
                 <span className="inline-flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Deficient ({kpis.deficient})</span>
               </div>
@@ -270,9 +270,9 @@ export default function ReportsPage() {
               <CardBody>
                 <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
                   {extraKpis.map(([k, v]) => (
-                    <div key={k} className="rounded-lg border border-slate-800 bg-slate-950 px-4 py-3">
-                      <div className="text-xs uppercase tracking-wide text-slate-500">{prettyKey(k)}</div>
-                      <div className="mt-1 text-xl font-semibold text-slate-100">{String(v)}</div>
+                    <div key={k} className="rounded-lg border border-stone-800 bg-stone-950 px-4 py-3">
+                      <div className="text-xs uppercase tracking-wide text-stone-500">{prettyKey(k)}</div>
+                      <div className="mt-1 text-xl font-semibold text-stone-100">{String(v)}</div>
                     </div>
                   ))}
                 </div>
@@ -284,11 +284,11 @@ export default function ReportsPage() {
           <Card>
             <CardHeader className="flex items-center justify-between">
               <h2 className="text-base font-semibold text-white">Open Deficiencies by Reason</h2>
-              <span className="text-xs text-slate-500">{reasonTotal} total</span>
+              <span className="text-xs text-stone-500">{reasonTotal} total</span>
             </CardHeader>
             <CardBody>
               {reasonRows.length === 0 ? (
-                <p className="py-6 text-center text-sm text-slate-500">No open deficiencies. Your portfolio is clean.</p>
+                <p className="py-6 text-center text-sm text-stone-500">No open deficiencies. Your portfolio is clean.</p>
               ) : (
                 <div className="space-y-3">
                   {reasonRows.map((r, i) => {
@@ -296,14 +296,14 @@ export default function ReportsPage() {
                     return (
                       <div key={r.reason_code}>
                         <div className="mb-1 flex items-center justify-between text-sm">
-                          <span className="flex items-center gap-2 text-slate-300">
+                          <span className="flex items-center gap-2 text-stone-300">
                             <span className="h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: color }} />
-                            <span className="font-mono text-xs text-slate-400">{r.reason_code}</span>
-                            {r.title && <span className="text-slate-500">— {r.title}</span>}
+                            <span className="font-mono text-xs text-stone-400">{r.reason_code}</span>
+                            {r.title && <span className="text-stone-500">— {r.title}</span>}
                           </span>
-                          <span className="font-semibold text-slate-200">{r.count}</span>
+                          <span className="font-semibold text-stone-200">{r.count}</span>
                         </div>
-                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                           <div
                             className="h-full rounded-full"
                             style={{ width: `${Math.max(4, (r.count / reasonMax) * 100)}%`, backgroundColor: color }}
@@ -324,7 +324,7 @@ export default function ReportsPage() {
             </CardHeader>
             <CardBody className="p-0">
               {projectRows.length === 0 ? (
-                <p className="px-5 py-8 text-center text-sm text-slate-500">No projects to roll up yet.</p>
+                <p className="px-5 py-8 text-center text-sm text-stone-500">No projects to roll up yet.</p>
               ) : (
                 <Table>
                   <THead>
@@ -342,16 +342,16 @@ export default function ReportsPage() {
                       const cp = pct(p.compliant, p.total)
                       return (
                         <TR key={p.id || p.name}>
-                          <TD className="font-medium text-slate-100">{p.name}</TD>
-                          <TD className="text-right text-slate-300">{p.total}</TD>
+                          <TD className="font-medium text-stone-100">{p.name}</TD>
+                          <TD className="text-right text-stone-300">{p.total}</TD>
                           <TD className="text-right text-emerald-400">{p.compliant}</TD>
                           <TD className="text-right text-red-400">{p.deficient || '—'}</TD>
-                          <TD className="text-right text-amber-400">{p.expiring || '—'}</TD>
+                          <TD className="text-right text-cyan-400">{p.expiring || '—'}</TD>
                           <TD>
                             <div className="flex items-center gap-2">
-                              <div className="h-2 w-24 overflow-hidden rounded-full bg-slate-800">
+                              <div className="h-2 w-24 overflow-hidden rounded-full bg-stone-800">
                                 <div
-                                  className={cp >= 80 ? 'h-full bg-emerald-500' : cp >= 50 ? 'h-full bg-amber-500' : 'h-full bg-red-500'}
+                                  className={cp >= 80 ? 'h-full bg-emerald-500' : cp >= 50 ? 'h-full bg-cyan-500' : 'h-full bg-red-500'}
                                   style={{ width: `${cp}%` }}
                                 />
                               </div>

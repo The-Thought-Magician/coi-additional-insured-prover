@@ -234,7 +234,7 @@ export default function DeficienciesPage() {
     <div className="space-y-6">
       <div className="flex flex-col gap-2">
         <h1 className="text-2xl font-bold text-white">Deficiency Workbench</h1>
-        <p className="text-sm text-slate-400">
+        <p className="text-sm text-stone-400">
           Triage open compliance deficiencies: assign owners, set due dates, resolve once cured, or waive with
           justification.
         </p>
@@ -253,12 +253,12 @@ export default function DeficienciesPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search detail, reason, assignee..."
-            className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none lg:max-w-xs"
+            className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none lg:max-w-xs"
           />
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+            className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
           >
             {STATUSES.map((s) => (
               <option key={s || 'all'} value={s}>
@@ -269,7 +269,7 @@ export default function DeficienciesPage() {
           <select
             value={severityFilter}
             onChange={(e) => setSeverityFilter(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+            className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
           >
             {SEVERITIES.map((s) => (
               <option key={s || 'all'} value={s}>
@@ -280,7 +280,7 @@ export default function DeficienciesPage() {
           <select
             value={reasonFilter}
             onChange={(e) => setReasonFilter(e.target.value)}
-            className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+            className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
           >
             <option value="">All reason codes</option>
             {reasonOptions.map((rc) => (
@@ -300,7 +300,7 @@ export default function DeficienciesPage() {
           >
             Clear
           </Button>
-          <span className="text-xs text-slate-500 lg:ml-auto">
+          <span className="text-xs text-stone-500 lg:ml-auto">
             {filtered.length} of {deficiencies.length}
           </span>
         </CardBody>
@@ -349,20 +349,20 @@ export default function DeficienciesPage() {
               return (
                 <TR key={d.id}>
                   <TD>
-                    <div className="font-medium text-slate-200">{reasonTitle(d)}</div>
-                    {d.reason_code && <div className="text-xs text-slate-500">{d.reason_code}</div>}
+                    <div className="font-medium text-stone-200">{reasonTitle(d)}</div>
+                    {d.reason_code && <div className="text-xs text-stone-500">{d.reason_code}</div>}
                   </TD>
                   <TD>
                     <Badge tone={severityTone(d.severity)}>{d.severity || 'n/a'}</Badge>
                   </TD>
                   <TD>
-                    <div className="max-w-xs truncate text-slate-400" title={d.detail ?? ''}>
+                    <div className="max-w-xs truncate text-stone-400" title={d.detail ?? ''}>
                       {d.detail || '—'}
                     </div>
                   </TD>
-                  <TD>{d.assigned_to || <span className="text-slate-600">unassigned</span>}</TD>
+                  <TD>{d.assigned_to || <span className="text-stone-600">unassigned</span>}</TD>
                   <TD>
-                    <span className={overdue ? 'font-medium text-red-400' : 'text-slate-400'}>
+                    <span className={overdue ? 'font-medium text-red-400' : 'text-stone-400'}>
                       {fmtDate(d.due_date)}
                       {overdue && ' (overdue)'}
                     </span>
@@ -399,7 +399,7 @@ export default function DeficienciesPage() {
                           {!terminal && (
                             <Button
                               variant="ghost"
-                              className="px-2.5 py-1 text-xs text-amber-400 hover:text-amber-300"
+                              className="px-2.5 py-1 text-xs text-cyan-400 hover:text-cyan-300"
                               onClick={() => openWaive(d)}
                             >
                               Waive
@@ -443,41 +443,41 @@ export default function DeficienciesPage() {
       >
         {assignTarget && (
           <form onSubmit={submitAssign} className="space-y-4">
-            <div className="rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-2">
-              <div className="text-sm font-medium text-slate-200">{reasonTitle(assignTarget)}</div>
-              {assignTarget.detail && <div className="mt-0.5 text-xs text-slate-500">{assignTarget.detail}</div>}
+            <div className="rounded-lg border border-stone-800 bg-stone-950/50 px-3 py-2">
+              <div className="text-sm font-medium text-stone-200">{reasonTitle(assignTarget)}</div>
+              {assignTarget.detail && <div className="mt-0.5 text-xs text-stone-500">{assignTarget.detail}</div>}
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Assign To (user id / email)
               </label>
               <input
                 value={assignTo}
                 onChange={(e) => setAssignTo(e.target.value)}
                 placeholder="e.g. risk@example.com"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                   Due Date
                 </label>
                 <input
                   type="date"
                   value={assignDue}
                   onChange={(e) => setAssignDue(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+                <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                   Status
                 </label>
                 <select
                   value={assignStatus}
                   onChange={(e) => setAssignStatus(e.target.value)}
-                  className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                  className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
                 >
                   {STATUSES.filter(Boolean).map((s) => (
                     <option key={s} value={s}>
@@ -509,16 +509,16 @@ export default function DeficienciesPage() {
       >
         {waiveTarget && (
           <form onSubmit={submitWaive} className="space-y-4">
-            <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-sm text-amber-200">
+            <div className="rounded-lg border border-cyan-500/30 bg-cyan-500/10 px-3 py-2 text-sm text-cyan-200">
               A waiver records an accepted exception and sets this deficiency to <strong>waived</strong>. Document the
               business justification for the audit trail.
             </div>
-            <div className="rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-2">
-              <div className="text-sm font-medium text-slate-200">{reasonTitle(waiveTarget)}</div>
-              {waiveTarget.detail && <div className="mt-0.5 text-xs text-slate-500">{waiveTarget.detail}</div>}
+            <div className="rounded-lg border border-stone-800 bg-stone-950/50 px-3 py-2">
+              <div className="text-sm font-medium text-stone-200">{reasonTitle(waiveTarget)}</div>
+              {waiveTarget.detail && <div className="mt-0.5 text-xs text-stone-500">{waiveTarget.detail}</div>}
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Justification
               </label>
               <textarea
@@ -526,18 +526,18 @@ export default function DeficienciesPage() {
                 onChange={(e) => setWaiveJustification(e.target.value)}
                 rows={3}
                 placeholder="Why is this deficiency acceptable?"
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500 focus:outline-none"
               />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500">
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500">
                 Expires (optional)
               </label>
               <input
                 type="date"
                 value={waiveExpires}
                 onChange={(e) => setWaiveExpires(e.target.value)}
-                className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+                className="w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
               />
             </div>
           </form>

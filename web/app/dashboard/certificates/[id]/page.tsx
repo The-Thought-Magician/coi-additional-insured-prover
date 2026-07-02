@@ -76,8 +76,8 @@ const COVERAGE_TYPES = ['general_liability', 'auto_liability', 'umbrella', 'work
 const ENDORSEMENT_TYPES = ['cg_20_10', 'cg_20_37', 'blanket_ai', 'cg_24_04', 'pnc', 'other']
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none'
-const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none'
+const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500'
 
 function fmtDate(d?: string | null) {
   if (!d) return '—'
@@ -323,7 +323,7 @@ export default function CertificateDetailPage() {
   if (!cert) {
     return (
       <div className="space-y-4">
-        <Link href="/dashboard/certificates" className="text-sm text-slate-400 hover:text-amber-300">
+        <Link href="/dashboard/certificates" className="text-sm text-stone-400 hover:text-cyan-300">
           ← Certificates
         </Link>
         <EmptyState title="Certificate not found" description={error || 'This certificate may have been deleted.'} icon="⚠️" />
@@ -345,7 +345,7 @@ export default function CertificateDetailPage() {
       {/* Header bar */}
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <Link href="/dashboard/certificates" className="text-sm text-slate-400 hover:text-amber-300">
+          <Link href="/dashboard/certificates" className="text-sm text-stone-400 hover:text-cyan-300">
             ← Certificates
           </Link>
           <h1 className="mt-1 text-2xl font-bold text-white">{cert.insured_name || 'Certificate'}</h1>
@@ -356,8 +356,8 @@ export default function CertificateDetailPage() {
               <Badge tone="warning">ungraded</Badge>
             )}
             {cert.status && <Badge tone={toneForStatus(cert.status)}>{cert.status}</Badge>}
-            {cert.source && <span className="text-xs text-slate-500">source: {cert.source}</span>}
-            {cert.template_version != null && <span className="text-xs text-slate-500">template v{cert.template_version}</span>}
+            {cert.source && <span className="text-xs text-stone-500">source: {cert.source}</span>}
+            {cert.template_version != null && <span className="text-xs text-stone-500">template v{cert.template_version}</span>}
           </div>
         </div>
         <div className="flex gap-2">
@@ -439,19 +439,19 @@ export default function CertificateDetailPage() {
         <CardBody className="grid grid-cols-1 gap-x-8 gap-y-3 text-sm md:grid-cols-3">
           <div>
             <div className={labelCls}>Producer</div>
-            <div className="text-slate-200">{cert.producer || '—'}</div>
+            <div className="text-stone-200">{cert.producer || '—'}</div>
           </div>
           <div>
             <div className={labelCls}>Holder</div>
-            <div className="text-slate-200">{cert.holder_text || '—'}</div>
+            <div className="text-stone-200">{cert.holder_text || '—'}</div>
           </div>
           <div>
             <div className={labelCls}>Issued</div>
-            <div className="text-slate-200">{fmtDate(cert.issue_date)}</div>
+            <div className="text-stone-200">{fmtDate(cert.issue_date)}</div>
           </div>
           <div className="md:col-span-3">
             <div className={labelCls}>Description of operations</div>
-            <div className="text-slate-300">{cert.description_of_operations || '—'}</div>
+            <div className="text-stone-300">{cert.description_of_operations || '—'}</div>
           </div>
         </CardBody>
       </Card>
@@ -487,10 +487,10 @@ export default function CertificateDetailPage() {
               <TBody>
                 {lines.map((l) => (
                   <TR key={l.id}>
-                    <TD className="font-medium text-slate-200">{(l.coverage_type || '').replace(/_/g, ' ') || '—'}</TD>
+                    <TD className="font-medium text-stone-200">{(l.coverage_type || '').replace(/_/g, ' ') || '—'}</TD>
                     <TD>
                       {l.carrier_name || '—'}
-                      {l.carrier_naic && <div className="text-xs text-slate-500">NAIC {l.carrier_naic}</div>}
+                      {l.carrier_naic && <div className="text-xs text-stone-500">NAIC {l.carrier_naic}</div>}
                     </TD>
                     <TD>{l.policy_number || '—'}</TD>
                     <TD>{fmtDate(l.effective_date)}</TD>
@@ -546,7 +546,7 @@ export default function CertificateDetailPage() {
               <TBody>
                 {endorsements.map((en) => (
                   <TR key={en.id}>
-                    <TD className="font-medium text-slate-200">{(en.endorsement_type || '').replace(/_/g, ' ') || '—'}</TD>
+                    <TD className="font-medium text-stone-200">{(en.endorsement_type || '').replace(/_/g, ' ') || '—'}</TD>
                     <TD>{(en.coverage_type || '').replace(/_/g, ' ') || '—'}</TD>
                     <TD>{en.form_number || '—'}</TD>
                     <TD>{en.edition_date || '—'}</TD>
@@ -587,13 +587,13 @@ export default function CertificateDetailPage() {
               {/* score bar */}
               {latest?.score != null && (
                 <div>
-                  <div className="mb-1 flex items-center justify-between text-xs text-slate-400">
+                  <div className="mb-1 flex items-center justify-between text-xs text-stone-400">
                     <span>Compliance score</span>
                     <span>{Math.round(Number(latest.score) * (Number(latest.score) <= 1 ? 100 : 1))}%</span>
                   </div>
-                  <div className="h-3 w-full overflow-hidden rounded-full bg-slate-800">
+                  <div className="h-3 w-full overflow-hidden rounded-full bg-stone-800">
                     <div
-                      className="h-full rounded-full bg-gradient-to-r from-amber-500 to-emerald-400"
+                      className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-emerald-400"
                       style={{ width: `${Math.min(100, Math.round(Number(latest.score) * (Number(latest.score) <= 1 ? 100 : 1)))}%` }}
                     />
                   </div>
@@ -603,25 +603,25 @@ export default function CertificateDetailPage() {
               {/* reason codes */}
               {reasonCodes.length > 0 && (
                 <div className="space-y-2">
-                  <h3 className="text-sm font-semibold text-slate-300">Findings</h3>
+                  <h3 className="text-sm font-semibold text-stone-300">Findings</h3>
                   <div className="space-y-2">
                     {reasonCodes.map((r: any, i: number) => {
                       const passed = r.passed === true || r.status === 'passed' || r.ok === true
                       const sev = (r.severity || (passed ? 'passed' : 'failed')) as string
                       const tone: BadgeTone = passed ? 'success' : sev === 'warning' ? 'warning' : 'danger'
                       return (
-                        <div key={i} className="flex items-start justify-between gap-3 rounded-lg border border-slate-800 bg-slate-950/50 px-4 py-3">
+                        <div key={i} className="flex items-start justify-between gap-3 rounded-lg border border-stone-800 bg-stone-950/50 px-4 py-3">
                           <div>
                             <div className="flex items-center gap-2">
                               <Badge tone={tone}>{passed ? 'PASS' : sev}</Badge>
-                              <span className="text-sm font-medium text-slate-200">
+                              <span className="text-sm font-medium text-stone-200">
                                 {r.reason_code || r.code || r.title || r.coverage_type || 'check'}
                               </span>
                             </div>
                             {(r.detail || r.message || r.description) && (
-                              <p className="mt-1 text-sm text-slate-400">{r.detail || r.message || r.description}</p>
+                              <p className="mt-1 text-sm text-stone-400">{r.detail || r.message || r.description}</p>
                             )}
-                            {r.remediation && <p className="mt-1 text-xs text-amber-300">Fix: {r.remediation}</p>}
+                            {r.remediation && <p className="mt-1 text-xs text-cyan-300">Fix: {r.remediation}</p>}
                           </div>
                         </div>
                       )
@@ -632,7 +632,7 @@ export default function CertificateDetailPage() {
 
               {/* grading history */}
               <div className="space-y-2">
-                <h3 className="text-sm font-semibold text-slate-300">Grading history</h3>
+                <h3 className="text-sm font-semibold text-stone-300">Grading history</h3>
                 <Table>
                   <THead>
                     <TR>
@@ -685,9 +685,9 @@ export default function CertificateDetailPage() {
               <TBody>
                 {attachments.map((a) => (
                   <TR key={a.id}>
-                    <TD className="font-medium text-slate-200">
+                    <TD className="font-medium text-stone-200">
                       {a.url ? (
-                        <a href={a.url} target="_blank" rel="noreferrer" className="text-amber-300 hover:text-amber-200">
+                        <a href={a.url} target="_blank" rel="noreferrer" className="text-cyan-300 hover:text-cyan-200">
                           {a.filename || 'file'}
                         </a>
                       ) : (
@@ -766,16 +766,16 @@ export default function CertificateDetailPage() {
               <input type="number" value={(lineModal.data.aggregate_limit as any) ?? ''} onChange={(e) => setLineModal({ ...lineModal, data: { ...lineModal.data, aggregate_limit: e.target.value as any } })} className={inputCls} />
             </div>
             <div className="sm:col-span-2 flex flex-wrap gap-4">
-              <label className="flex items-center gap-2 text-sm text-slate-300">
-                <input type="checkbox" checked={!!lineModal.data.additional_insured_box} onChange={(e) => setLineModal({ ...lineModal, data: { ...lineModal.data, additional_insured_box: e.target.checked } })} className="accent-amber-500" />
+              <label className="flex items-center gap-2 text-sm text-stone-300">
+                <input type="checkbox" checked={!!lineModal.data.additional_insured_box} onChange={(e) => setLineModal({ ...lineModal, data: { ...lineModal.data, additional_insured_box: e.target.checked } })} className="accent-cyan-500" />
                 Additional insured
               </label>
-              <label className="flex items-center gap-2 text-sm text-slate-300">
-                <input type="checkbox" checked={!!lineModal.data.subrogation_waived_box} onChange={(e) => setLineModal({ ...lineModal, data: { ...lineModal.data, subrogation_waived_box: e.target.checked } })} className="accent-amber-500" />
+              <label className="flex items-center gap-2 text-sm text-stone-300">
+                <input type="checkbox" checked={!!lineModal.data.subrogation_waived_box} onChange={(e) => setLineModal({ ...lineModal, data: { ...lineModal.data, subrogation_waived_box: e.target.checked } })} className="accent-cyan-500" />
                 Subrogation waived
               </label>
-              <label className="flex items-center gap-2 text-sm text-slate-300">
-                <input type="checkbox" checked={!!lineModal.data.pnc_box} onChange={(e) => setLineModal({ ...lineModal, data: { ...lineModal.data, pnc_box: e.target.checked } })} className="accent-amber-500" />
+              <label className="flex items-center gap-2 text-sm text-stone-300">
+                <input type="checkbox" checked={!!lineModal.data.pnc_box} onChange={(e) => setLineModal({ ...lineModal, data: { ...lineModal.data, pnc_box: e.target.checked } })} className="accent-cyan-500" />
                 Primary &amp; non-contributory
               </label>
             </div>
@@ -839,12 +839,12 @@ export default function CertificateDetailPage() {
               <input value={endModal.data.scope || ''} onChange={(e) => setEndModal({ ...endModal, data: { ...endModal.data, scope: e.target.value } })} className={inputCls} />
             </div>
             <div className="sm:col-span-2 flex flex-wrap gap-4">
-              <label className="flex items-center gap-2 text-sm text-slate-300">
-                <input type="checkbox" checked={!!endModal.data.is_blanket} onChange={(e) => setEndModal({ ...endModal, data: { ...endModal.data, is_blanket: e.target.checked } })} className="accent-amber-500" />
+              <label className="flex items-center gap-2 text-sm text-stone-300">
+                <input type="checkbox" checked={!!endModal.data.is_blanket} onChange={(e) => setEndModal({ ...endModal, data: { ...endModal.data, is_blanket: e.target.checked } })} className="accent-cyan-500" />
                 Blanket
               </label>
-              <label className="flex items-center gap-2 text-sm text-slate-300">
-                <input type="checkbox" checked={endModal.data.provided == null ? true : !!endModal.data.provided} onChange={(e) => setEndModal({ ...endModal, data: { ...endModal.data, provided: e.target.checked } })} className="accent-amber-500" />
+              <label className="flex items-center gap-2 text-sm text-stone-300">
+                <input type="checkbox" checked={endModal.data.provided == null ? true : !!endModal.data.provided} onChange={(e) => setEndModal({ ...endModal, data: { ...endModal.data, provided: e.target.checked } })} className="accent-cyan-500" />
                 Provided / attached
               </label>
             </div>

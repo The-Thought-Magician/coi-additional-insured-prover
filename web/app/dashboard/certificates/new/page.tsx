@@ -77,8 +77,8 @@ function emptyEndorsement(): EndorsementDraft {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none'
-const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-slate-500'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none'
+const labelCls = 'mb-1 block text-xs font-medium uppercase tracking-wide text-stone-500'
 
 export default function NewCertificatePage() {
   const router = useRouter()
@@ -264,11 +264,11 @@ export default function NewCertificatePage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <Link href="/dashboard/certificates" className="text-sm text-slate-400 hover:text-amber-300">
+          <Link href="/dashboard/certificates" className="text-sm text-stone-400 hover:text-cyan-300">
             ← Certificates
           </Link>
           <h1 className="mt-1 text-2xl font-bold text-white">New ACORD 25 Certificate</h1>
-          <p className="mt-1 text-sm text-slate-400">Intake the header, coverage lines, and endorsements for grading.</p>
+          <p className="mt-1 text-sm text-stone-400">Intake the header, coverage lines, and endorsements for grading.</p>
         </div>
       </div>
 
@@ -281,7 +281,7 @@ export default function NewCertificatePage() {
         <CardHeader className="flex items-center justify-between">
           <div>
             <h2 className="text-base font-semibold text-white">Quick intake from raw ACORD text</h2>
-            <p className="text-xs text-slate-500">Paste the certificate text and let the parser extract coverage lines + endorsements.</p>
+            <p className="text-xs text-stone-500">Paste the certificate text and let the parser extract coverage lines + endorsements.</p>
           </div>
           <Badge tone="amber">optional</Badge>
         </CardHeader>
@@ -298,7 +298,7 @@ export default function NewCertificatePage() {
             <Button type="button" variant="secondary" onClick={handleParseAndCreate} disabled={parsing}>
               {parsing ? <Spinner label="Parsing…" /> : 'Parse & create'}
             </Button>
-            <span className="text-xs text-slate-500">
+            <span className="text-xs text-stone-500">
               Creates the certificate with the header below, then parses the pasted text into it.
             </span>
           </div>
@@ -378,11 +378,11 @@ export default function NewCertificatePage() {
             </Button>
           </CardHeader>
           <CardBody className="space-y-4">
-            {lines.length === 0 && <p className="text-sm text-slate-500">No coverage lines. Add at least one line.</p>}
+            {lines.length === 0 && <p className="text-sm text-stone-500">No coverage lines. Add at least one line.</p>}
             {lines.map((l, i) => (
-              <div key={i} className="rounded-lg border border-slate-800 bg-slate-950/60 p-4">
+              <div key={i} className="rounded-lg border border-stone-800 bg-stone-950/60 p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-xs font-medium uppercase tracking-wide text-amber-300">Line {i + 1}</span>
+                  <span className="text-xs font-medium uppercase tracking-wide text-cyan-300">Line {i + 1}</span>
                   <Button
                     type="button"
                     variant="ghost"
@@ -443,16 +443,16 @@ export default function NewCertificatePage() {
                   </div>
                 </div>
                 <div className="mt-3 flex flex-wrap gap-4">
-                  <label className="flex items-center gap-2 text-sm text-slate-300">
-                    <input type="checkbox" checked={l.additional_insured_box} onChange={(e) => updateLine(i, { additional_insured_box: e.target.checked })} className="accent-amber-500" />
+                  <label className="flex items-center gap-2 text-sm text-stone-300">
+                    <input type="checkbox" checked={l.additional_insured_box} onChange={(e) => updateLine(i, { additional_insured_box: e.target.checked })} className="accent-cyan-500" />
                     Additional insured box
                   </label>
-                  <label className="flex items-center gap-2 text-sm text-slate-300">
-                    <input type="checkbox" checked={l.subrogation_waived_box} onChange={(e) => updateLine(i, { subrogation_waived_box: e.target.checked })} className="accent-amber-500" />
+                  <label className="flex items-center gap-2 text-sm text-stone-300">
+                    <input type="checkbox" checked={l.subrogation_waived_box} onChange={(e) => updateLine(i, { subrogation_waived_box: e.target.checked })} className="accent-cyan-500" />
                     Subrogation waived
                   </label>
-                  <label className="flex items-center gap-2 text-sm text-slate-300">
-                    <input type="checkbox" checked={l.pnc_box} onChange={(e) => updateLine(i, { pnc_box: e.target.checked })} className="accent-amber-500" />
+                  <label className="flex items-center gap-2 text-sm text-stone-300">
+                    <input type="checkbox" checked={l.pnc_box} onChange={(e) => updateLine(i, { pnc_box: e.target.checked })} className="accent-cyan-500" />
                     Primary &amp; non-contributory
                   </label>
                 </div>
@@ -476,12 +476,12 @@ export default function NewCertificatePage() {
           </CardHeader>
           <CardBody className="space-y-4">
             {endorsements.length === 0 && (
-              <p className="text-sm text-slate-500">No endorsements added. Attach AI / waiver / P&amp;NC forms to support the boxes above.</p>
+              <p className="text-sm text-stone-500">No endorsements added. Attach AI / waiver / P&amp;NC forms to support the boxes above.</p>
             )}
             {endorsements.map((en, i) => (
-              <div key={i} className="rounded-lg border border-slate-800 bg-slate-950/60 p-4">
+              <div key={i} className="rounded-lg border border-stone-800 bg-stone-950/60 p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-xs font-medium uppercase tracking-wide text-amber-300">Endorsement {i + 1}</span>
+                  <span className="text-xs font-medium uppercase tracking-wide text-cyan-300">Endorsement {i + 1}</span>
                   <Button
                     type="button"
                     variant="ghost"
@@ -530,12 +530,12 @@ export default function NewCertificatePage() {
                   </div>
                 </div>
                 <div className="mt-3 flex flex-wrap gap-4">
-                  <label className="flex items-center gap-2 text-sm text-slate-300">
-                    <input type="checkbox" checked={en.is_blanket} onChange={(e) => updateEndorsement(i, { is_blanket: e.target.checked })} className="accent-amber-500" />
+                  <label className="flex items-center gap-2 text-sm text-stone-300">
+                    <input type="checkbox" checked={en.is_blanket} onChange={(e) => updateEndorsement(i, { is_blanket: e.target.checked })} className="accent-cyan-500" />
                     Blanket
                   </label>
-                  <label className="flex items-center gap-2 text-sm text-slate-300">
-                    <input type="checkbox" checked={en.provided} onChange={(e) => updateEndorsement(i, { provided: e.target.checked })} className="accent-amber-500" />
+                  <label className="flex items-center gap-2 text-sm text-stone-300">
+                    <input type="checkbox" checked={en.provided} onChange={(e) => updateEndorsement(i, { provided: e.target.checked })} className="accent-cyan-500" />
                     Provided / attached
                   </label>
                 </div>

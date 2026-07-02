@@ -7,12 +7,12 @@ interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
 }
 
 const tones: Record<BadgeTone, string> = {
-  neutral: 'bg-slate-800 text-slate-300 border-slate-700',
+  neutral: 'bg-stone-800 text-stone-300 border-stone-700',
   success: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
-  warning: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  warning: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30',
   danger: 'bg-red-500/15 text-red-300 border-red-500/30',
   info: 'bg-sky-500/15 text-sky-300 border-sky-500/30',
-  amber: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  amber: 'bg-cyan-500/15 text-cyan-300 border-cyan-500/30',
 }
 
 // Maps common compliance/status strings to a tone for convenience.

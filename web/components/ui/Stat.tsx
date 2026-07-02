@@ -11,16 +11,16 @@ interface StatProps {
 const valueTones = {
   default: 'text-white',
   success: 'text-emerald-400',
-  warning: 'text-amber-400',
+  warning: 'text-cyan-400',
   danger: 'text-red-400',
 }
 
 export function Stat({ label, value, hint, tone = 'default', className = '' }: StatProps) {
   return (
-    <div className={`rounded-xl border border-slate-800 bg-slate-900 px-5 py-4 ${className}`}>
-      <div className="text-xs font-medium uppercase tracking-wide text-slate-500">{label}</div>
+    <div className={`rounded-xl border border-stone-800 bg-stone-900 px-5 py-4 ${className}`}>
+      <div className="text-xs font-medium uppercase tracking-wide text-stone-500">{label}</div>
       <div className={`mt-2 text-3xl font-bold ${valueTones[tone]}`}>{value}</div>
-      {hint != null && <div className="mt-1 text-sm text-slate-400">{hint}</div>}
+      {hint != null && <div className="mt-1 text-sm text-stone-400">{hint}</div>}
     </div>
   )
 }

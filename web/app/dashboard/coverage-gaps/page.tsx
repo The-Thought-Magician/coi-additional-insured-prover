@@ -193,7 +193,7 @@ export default function CoverageGapsPage() {
       <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Coverage Gaps</h1>
-          <p className="text-sm text-slate-400">Coverage-lapse timeline explorer and worked-uninsured exposure.</p>
+          <p className="text-sm text-stone-400">Coverage-lapse timeline explorer and worked-uninsured exposure.</p>
         </div>
         <div className="flex gap-2">
           <Button variant="secondary" onClick={loadAll}>Refresh</Button>
@@ -219,7 +219,7 @@ export default function CoverageGapsPage() {
             <select
               value={vendorFilter}
               onChange={(e) => setVendorFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
             >
               <option value="">All vendors</option>
               {vendors.map((v) => (
@@ -229,7 +229,7 @@ export default function CoverageGapsPage() {
             <select
               value={projectFilter}
               onChange={(e) => setProjectFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
             >
               <option value="">All projects</option>
               {projects.map((p) => (
@@ -239,7 +239,7 @@ export default function CoverageGapsPage() {
             <select
               value={coverageFilter}
               onChange={(e) => setCoverageFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500/60 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500/60 focus:outline-none"
             >
               <option value="">All coverage types</option>
               {coverageTypes.map((c) => (
@@ -250,10 +250,10 @@ export default function CoverageGapsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-500 focus:border-amber-500/60 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-500 focus:border-cyan-500/60 focus:outline-none"
             />
-            <label className="flex items-center gap-2 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-300">
-              <input type="checkbox" checked={uninsuredOnly} onChange={(e) => setUninsuredOnly(e.target.checked)} className="accent-amber-500" />
+            <label className="flex items-center gap-2 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-300">
+              <input type="checkbox" checked={uninsuredOnly} onChange={(e) => setUninsuredOnly(e.target.checked)} className="accent-cyan-500" />
               Worked uninsured only
             </label>
           </div>
@@ -267,37 +267,37 @@ export default function CoverageGapsPage() {
 
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">Lapse timeline</h2>
+          <h2 className="text-sm font-semibold text-stone-200">Lapse timeline</h2>
         </CardHeader>
         <CardBody>
           {!timeline ? (
-            <p className="text-sm text-slate-500">No dated gaps to plot. Recompute gaps or adjust filters.</p>
+            <p className="text-sm text-stone-500">No dated gaps to plot. Recompute gaps or adjust filters.</p>
           ) : (
             <div className="space-y-2">
-              <div className="flex justify-between text-xs text-slate-500">
+              <div className="flex justify-between text-xs text-stone-500">
                 <span>{fmtDate(new Date(timeline.min).toISOString())}</span>
                 <span>{fmtDate(new Date(timeline.max).toISOString())}</span>
               </div>
               <div className="space-y-1.5">
                 {timeline.rows.map(({ gap, left, width }) => (
                   <div key={gap.id} className="flex items-center gap-3">
-                    <div className="w-40 shrink-0 truncate text-xs text-slate-400" title={vendorName(gap.vendor_id)}>
+                    <div className="w-40 shrink-0 truncate text-xs text-stone-400" title={vendorName(gap.vendor_id)}>
                       {vendorName(gap.vendor_id)}
                     </div>
-                    <div className="relative h-5 flex-1 rounded bg-slate-800">
+                    <div className="relative h-5 flex-1 rounded bg-stone-800">
                       <div
-                        className={`absolute top-0 h-full rounded ${gap.worked_uninsured ? 'bg-red-500' : 'bg-amber-500'}`}
+                        className={`absolute top-0 h-full rounded ${gap.worked_uninsured ? 'bg-red-500' : 'bg-cyan-500'}`}
                         style={{ left: `${left}%`, width: `${width}%` }}
                         title={`${gap.coverage_type || ''} • ${gap.gap_days || 0}d • ${fmtDate(gap.gap_start)} → ${fmtDate(gap.gap_end)}`}
                       />
                     </div>
-                    <div className="w-12 shrink-0 text-right text-xs font-semibold text-slate-300">{gap.gap_days ?? 0}d</div>
+                    <div className="w-12 shrink-0 text-right text-xs font-semibold text-stone-300">{gap.gap_days ?? 0}d</div>
                   </div>
                 ))}
               </div>
-              <div className="flex gap-4 pt-2 text-xs text-slate-500">
+              <div className="flex gap-4 pt-2 text-xs text-stone-500">
                 <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-red-500" /> Worked uninsured</span>
-                <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-amber-500" /> Coverage lapse</span>
+                <span className="flex items-center gap-1.5"><span className="h-2.5 w-2.5 rounded-sm bg-cyan-500" /> Coverage lapse</span>
               </div>
             </div>
           )}
@@ -306,8 +306,8 @@ export default function CoverageGapsPage() {
 
       <Card>
         <CardHeader>
-          <h2 className="text-sm font-semibold text-slate-200">
-            Gap detail <span className="text-slate-500">({filtered.length})</span>
+          <h2 className="text-sm font-semibold text-stone-200">
+            Gap detail <span className="text-stone-500">({filtered.length})</span>
           </h2>
         </CardHeader>
         <CardBody>
@@ -333,7 +333,7 @@ export default function CoverageGapsPage() {
               <TBody>
                 {filtered.map((g) => (
                   <TR key={g.id} className={g.worked_uninsured ? 'bg-red-500/5' : ''}>
-                    <TD className="font-medium text-slate-200">{vendorName(g.vendor_id)}</TD>
+                    <TD className="font-medium text-stone-200">{vendorName(g.vendor_id)}</TD>
                     <TD>{projectName(g.project_id)}</TD>
                     <TD>{g.coverage_type || '—'}</TD>
                     <TD>{fmtDate(g.gap_start)}</TD>

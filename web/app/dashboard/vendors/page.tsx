@@ -216,15 +216,15 @@ export default function VendorsPage() {
   const set = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }))
 
-  const inputCls = 'w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-sm text-white placeholder:text-slate-500 focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/30'
-  const selectCls = 'rounded-lg border border-slate-800 bg-slate-900 px-3 py-2 text-sm text-white focus:border-amber-500/60 focus:outline-none focus:ring-2 focus:ring-amber-500/30'
+  const inputCls = 'w-full rounded-lg border border-stone-800 bg-stone-950 px-3 py-2 text-sm text-white placeholder:text-stone-500 focus:border-cyan-500/60 focus:outline-none focus:ring-2 focus:ring-cyan-500/30'
+  const selectCls = 'rounded-lg border border-stone-800 bg-stone-900 px-3 py-2 text-sm text-white focus:border-cyan-500/60 focus:outline-none focus:ring-2 focus:ring-cyan-500/30'
 
   return (
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Vendors</h1>
-          <p className="mt-1 text-sm text-slate-400">Subcontractor registry. Track trades, risk tiers, and compliance status.</p>
+          <p className="mt-1 text-sm text-stone-400">Subcontractor registry. Track trades, risk tiers, and compliance status.</p>
         </div>
         <Button onClick={() => { setForm({ ...blankForm }); setFormError(''); setShowCreate(true) }}>+ Add Vendor</Button>
       </div>
@@ -232,12 +232,12 @@ export default function VendorsPage() {
       {/* Saved views */}
       {savedViews.length > 0 && (
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-semibold uppercase tracking-wide text-slate-500">Saved views:</span>
+          <span className="text-xs font-semibold uppercase tracking-wide text-stone-500">Saved views:</span>
           {savedViews.map((v) => (
             <button
               key={v.id}
               onClick={() => applyView(v)}
-              className="rounded-full border border-slate-700 bg-slate-800 px-3 py-1 text-xs text-slate-200 hover:border-amber-500/50 hover:text-amber-300"
+              className="rounded-full border border-stone-700 bg-stone-800 px-3 py-1 text-xs text-stone-200 hover:border-cyan-500/50 hover:text-cyan-300"
             >
               {v.name}
             </button>
@@ -246,7 +246,7 @@ export default function VendorsPage() {
       )}
 
       {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3 rounded-xl border border-slate-800 bg-slate-900/50 p-4">
+      <div className="flex flex-wrap items-center gap-3 rounded-xl border border-stone-800 bg-stone-900/50 p-4">
         <input
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -265,7 +265,7 @@ export default function VendorsPage() {
         <Button variant="secondary" onClick={() => { setViewName(''); setShowSaveView(true) }} disabled={!hasFilters}>
           Save view
         </Button>
-        <span className="ml-auto text-sm text-slate-500">{filtered.length} {filtered.length === 1 ? 'vendor' : 'vendors'}</span>
+        <span className="ml-auto text-sm text-stone-500">{filtered.length} {filtered.length === 1 ? 'vendor' : 'vendors'}</span>
       </div>
 
       {error && (
@@ -299,26 +299,26 @@ export default function VendorsPage() {
             {filtered.map((v) => (
               <TR key={v.id}>
                 <TD>
-                  <Link href={`/dashboard/vendors/${v.id}`} className="font-medium text-white hover:text-amber-300">
+                  <Link href={`/dashboard/vendors/${v.id}`} className="font-medium text-white hover:text-cyan-300">
                     {v.legal_name}
                   </Link>
-                  {v.dba && <div className="text-xs text-slate-500">dba {v.dba}</div>}
+                  {v.dba && <div className="text-xs text-stone-500">dba {v.dba}</div>}
                   {v.tags && v.tags.length > 0 && (
                     <div className="mt-1 flex flex-wrap gap-1">
                       {v.tags.slice(0, 4).map((t) => (
-                        <span key={t} className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] text-slate-400">{t}</span>
+                        <span key={t} className="rounded bg-stone-800 px-1.5 py-0.5 text-[10px] text-stone-400">{t}</span>
                       ))}
                     </div>
                   )}
                 </TD>
-                <TD>{v.trade || <span className="text-slate-600">—</span>}</TD>
+                <TD>{v.trade || <span className="text-stone-600">—</span>}</TD>
                 <TD>
                   {v.contact_name || v.contact_email ? (
                     <div>
-                      {v.contact_name && <div className="text-slate-300">{v.contact_name}</div>}
-                      {v.contact_email && <div className="text-xs text-slate-500">{v.contact_email}</div>}
+                      {v.contact_name && <div className="text-stone-300">{v.contact_name}</div>}
+                      {v.contact_email && <div className="text-xs text-stone-500">{v.contact_email}</div>}
                     </div>
-                  ) : <span className="text-slate-600">—</span>}
+                  ) : <span className="text-stone-600">—</span>}
                 </TD>
                 <TD><Badge tone={riskTone(v.risk_tier)}>{v.risk_tier || 'n/a'}</Badge></TD>
                 <TD><Badge tone={toneForStatus(v.status)}>{v.status || 'unknown'}</Badge></TD>
@@ -351,63 +351,63 @@ export default function VendorsPage() {
         <div className="space-y-4">
           {formError && <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-sm text-red-300">{formError}</div>}
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Legal name *</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Legal name *</label>
             <input value={form.legal_name} onChange={set('legal_name')} className={inputCls} placeholder="Acme Electrical, Inc." />
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">DBA</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">DBA</label>
               <input value={form.dba} onChange={set('dba')} className={inputCls} placeholder="Acme Electric" />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Trade</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Trade</label>
               <input value={form.trade} onChange={set('trade')} className={inputCls} placeholder="Electrical" />
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">EIN</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">EIN</label>
               <input value={form.ein} onChange={set('ein')} className={inputCls} placeholder="12-3456789" />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Address</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Address</label>
               <input value={form.address} onChange={set('address')} className={inputCls} placeholder="123 Main St" />
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Contact name</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Contact name</label>
               <input value={form.contact_name} onChange={set('contact_name')} className={inputCls} />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Contact email</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Contact email</label>
               <input value={form.contact_email} onChange={set('contact_email')} className={inputCls} type="email" />
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Contact phone</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Contact phone</label>
               <input value={form.contact_phone} onChange={set('contact_phone')} className={inputCls} />
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Status</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Status</label>
               <select value={form.status} onChange={set('status')} className={`${selectCls} w-full`}>
                 {STATUSES.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium text-slate-400">Risk tier</label>
+              <label className="mb-1 block text-xs font-medium text-stone-400">Risk tier</label>
               <select value={form.risk_tier} onChange={set('risk_tier')} className={`${selectCls} w-full`}>
                 {RISK_TIERS.map((r) => <option key={r} value={r}>{r}</option>)}
               </select>
             </div>
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Tags (comma-separated)</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Tags (comma-separated)</label>
             <input value={form.tags} onChange={set('tags')} className={inputCls} placeholder="union, prevailing-wage" />
           </div>
           <div>
-            <label className="mb-1 block text-xs font-medium text-slate-400">Notes</label>
+            <label className="mb-1 block text-xs font-medium text-stone-400">Notes</label>
             <textarea value={form.notes} onChange={set('notes')} className={inputCls} rows={3} />
           </div>
         </div>
@@ -426,11 +426,11 @@ export default function VendorsPage() {
         }
       >
         <div className="space-y-3">
-          <p className="text-sm text-slate-400">
+          <p className="text-sm text-stone-400">
             Captures the active search and filters so you can re-apply them with one click.
           </p>
           <input value={viewName} onChange={(e) => setViewName(e.target.value)} className={inputCls} placeholder="e.g. High-risk active subs" autoFocus />
-          <div className="rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-xs text-slate-500">
+          <div className="rounded-lg border border-stone-800 bg-stone-950 px-3 py-2 text-xs text-stone-500">
             {[search.trim() && `search: "${search.trim()}"`, status && `status: ${status}`, riskTier && `risk: ${riskTier}`].filter(Boolean).join(' · ') || 'No filters set'}
           </div>
         </div>

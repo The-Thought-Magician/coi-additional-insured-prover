@@ -97,7 +97,7 @@ export default function DashboardPage() {
   const in90 = radar?.in90 ?? []
   const radarBuckets = [
     { label: 'Expired', value: expired.length, tone: 'bg-red-500' },
-    { label: '0–30 days', value: in30.length, tone: 'bg-amber-500' },
+    { label: '0–30 days', value: in30.length, tone: 'bg-cyan-500' },
     { label: '31–60 days', value: in60.length, tone: 'bg-yellow-500' },
     { label: '61–90 days', value: in90.length, tone: 'bg-sky-500' },
   ]
@@ -114,7 +114,7 @@ export default function DashboardPage() {
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-white">Compliance Overview</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             {workspace?.name ? `Workspace: ${workspace.name}` : 'Your COI compliance portfolio at a glance'}
           </p>
         </div>
@@ -162,17 +162,17 @@ export default function DashboardPage() {
                 <Badge tone="danger">{uninsured.length} active</Badge>
               </CardHeader>
               <CardBody>
-                <p className="mb-4 text-sm text-slate-400">
+                <p className="mb-4 text-sm text-stone-400">
                   These vendors are or were on site during a coverage lapse. This is your highest-priority exposure.
                 </p>
                 <ul className="divide-y divide-red-500/10">
                   {uninsured.slice(0, 8).map((u, i) => (
                     <li key={`${u.vendor_id}-${i}`} className="flex flex-wrap items-center justify-between gap-2 py-2.5">
                       <div>
-                        <Link href={`/dashboard/vendors/${u.vendor_id}`} className="font-medium text-white hover:text-amber-300">
+                        <Link href={`/dashboard/vendors/${u.vendor_id}`} className="font-medium text-white hover:text-cyan-300">
                           {u.legal_name || u.vendor_id}
                         </Link>
-                        <span className="ml-2 text-sm text-slate-500">
+                        <span className="ml-2 text-sm text-stone-500">
                           {u.coverage_type ? u.coverage_type.toUpperCase() : 'coverage'}{u.project_name ? ` · ${u.project_name}` : ''}
                         </span>
                       </div>
@@ -192,20 +192,20 @@ export default function DashboardPage() {
             <Card>
               <CardHeader className="flex items-center justify-between">
                 <h2 className="text-base font-semibold text-white">Expiry / Renewal Radar</h2>
-                <Link href="/dashboard/renewals" className="text-sm text-amber-400 hover:text-amber-300">Open radar →</Link>
+                <Link href="/dashboard/renewals" className="text-sm text-cyan-400 hover:text-cyan-300">Open radar →</Link>
               </CardHeader>
               <CardBody>
                 {radarBuckets.every((b) => b.value === 0) ? (
-                  <p className="py-6 text-center text-sm text-slate-500">No upcoming or lapsed expirations. You are current.</p>
+                  <p className="py-6 text-center text-sm text-stone-500">No upcoming or lapsed expirations. You are current.</p>
                 ) : (
                   <div className="space-y-4">
                     {radarBuckets.map((b) => (
                       <div key={b.label}>
                         <div className="mb-1 flex items-center justify-between text-sm">
-                          <span className="text-slate-300">{b.label}</span>
+                          <span className="text-stone-300">{b.label}</span>
                           <span className="font-semibold text-white">{b.value}</span>
                         </div>
-                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
+                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
                           <div className={`h-full rounded-full ${b.tone}`} style={{ width: `${(b.value / radarMax) * 100}%` }} />
                         </div>
                       </div>
@@ -219,21 +219,21 @@ export default function DashboardPage() {
             <Card>
               <CardHeader className="flex items-center justify-between">
                 <h2 className="text-base font-semibold text-white">Open Deficiencies by Reason</h2>
-                <Link href="/dashboard/deficiencies" className="text-sm text-amber-400 hover:text-amber-300">Workbench →</Link>
+                <Link href="/dashboard/deficiencies" className="text-sm text-cyan-400 hover:text-cyan-300">Workbench →</Link>
               </CardHeader>
               <CardBody>
                 {byReason.length === 0 ? (
-                  <p className="py-6 text-center text-sm text-slate-500">No open deficiencies. Every certificate is passing.</p>
+                  <p className="py-6 text-center text-sm text-stone-500">No open deficiencies. Every certificate is passing.</p>
                 ) : (
                   <ul className="space-y-3">
                     {byReason.slice(0, 8).map((r) => (
                       <li key={r.reason_code}>
                         <div className="mb-1 flex items-center justify-between text-sm">
-                          <code className="font-mono text-xs text-amber-300">{r.reason_code}</code>
+                          <code className="font-mono text-xs text-cyan-300">{r.reason_code}</code>
                           <span className="font-semibold text-white">{r.count}</span>
                         </div>
-                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-slate-800">
-                          <div className="h-full rounded-full bg-amber-500" style={{ width: `${(r.count / reasonMax) * 100}%` }} />
+                        <div className="h-2.5 w-full overflow-hidden rounded-full bg-stone-800">
+                          <div className="h-full rounded-full bg-cyan-500" style={{ width: `${(r.count / reasonMax) * 100}%` }} />
                         </div>
                       </li>
                     ))}
@@ -248,15 +248,15 @@ export default function DashboardPage() {
             <Card>
               <CardHeader><h2 className="text-base font-semibold text-white">Vendor Compliance Mix</h2></CardHeader>
               <CardBody>
-                <div className="flex h-4 w-full overflow-hidden rounded-full bg-slate-800">
+                <div className="flex h-4 w-full overflow-hidden rounded-full bg-stone-800">
                   <div className="h-full bg-emerald-500" style={{ width: `${(compliant / totalVendors) * 100}%` }} title={`Compliant: ${compliant}`} />
                   <div className="h-full bg-red-500" style={{ width: `${(deficient / totalVendors) * 100}%` }} title={`Deficient: ${deficient}`} />
                 </div>
                 <div className="mt-3 flex flex-wrap gap-4 text-sm">
-                  <span className="flex items-center gap-2 text-slate-300"><span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />Compliant {compliant}</span>
-                  <span className="flex items-center gap-2 text-slate-300"><span className="h-2.5 w-2.5 rounded-full bg-red-500" />Deficient {deficient}</span>
+                  <span className="flex items-center gap-2 text-stone-300"><span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />Compliant {compliant}</span>
+                  <span className="flex items-center gap-2 text-stone-300"><span className="h-2.5 w-2.5 rounded-full bg-red-500" />Deficient {deficient}</span>
                   {totalVendors - compliant - deficient > 0 && (
-                    <span className="flex items-center gap-2 text-slate-300"><span className="h-2.5 w-2.5 rounded-full bg-slate-600" />Other {totalVendors - compliant - deficient}</span>
+                    <span className="flex items-center gap-2 text-stone-300"><span className="h-2.5 w-2.5 rounded-full bg-stone-600" />Other {totalVendors - compliant - deficient}</span>
                   )}
                 </div>
               </CardBody>

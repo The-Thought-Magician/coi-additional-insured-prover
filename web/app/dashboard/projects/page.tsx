@@ -179,7 +179,7 @@ export default function ProjectsPage() {
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-2xl font-bold text-white">Projects</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Job sites with insurance requirements and assigned subcontractors.
           </p>
         </div>
@@ -252,10 +252,10 @@ export default function ProjectsPage() {
                 {filtered.map((p) => (
                   <TR key={p.id}>
                     <TD>
-                      <Link href={`/dashboard/projects/${p.id}`} className="font-medium text-slate-100 hover:text-amber-400">
+                      <Link href={`/dashboard/projects/${p.id}`} className="font-medium text-stone-100 hover:text-cyan-400">
                         {p.name}
                       </Link>
-                      {p.address && <div className="text-xs text-slate-500">{p.address}</div>}
+                      {p.address && <div className="text-xs text-stone-500">{p.address}</div>}
                       {p.lender_mandated && (
                         <Badge tone="warning" className="mt-1">
                           Lender mandated
@@ -264,13 +264,13 @@ export default function ProjectsPage() {
                     </TD>
                     <TD>
                       <div>{p.owner_developer || '—'}</div>
-                      {p.lender && <div className="text-xs text-slate-500">{p.lender}</div>}
+                      {p.lender && <div className="text-xs text-stone-500">{p.lender}</div>}
                     </TD>
                     <TD>
                       {templateName(p.template_id) || p.template_name ? (
                         <Badge tone="info">{templateName(p.template_id) || p.template_name}</Badge>
                       ) : (
-                        <span className="text-slate-600">none</span>
+                        <span className="text-stone-600">none</span>
                       )}
                     </TD>
                     <TD className="whitespace-nowrap text-xs">
@@ -333,7 +333,7 @@ export default function ProjectsPage() {
           </div>
           <Input label="Prime contract ref" value={form.prime_contract_ref} onChange={(v) => setForm({ ...form, prime_contract_ref: v })} />
           <label className="block">
-            <span className="mb-1 block text-xs font-medium text-slate-400">Requirement template</span>
+            <span className="mb-1 block text-xs font-medium text-stone-400">Requirement template</span>
             <select
               value={form.template_id}
               onChange={(e) => setForm({ ...form, template_id: e.target.value })}
@@ -348,9 +348,9 @@ export default function ProjectsPage() {
               ))}
             </select>
             {templates.length === 0 && (
-              <span className="mt-1 block text-xs text-slate-500">
+              <span className="mt-1 block text-xs text-stone-500">
                 No templates yet —{' '}
-                <Link href="/dashboard/templates" className="text-amber-400 hover:underline">
+                <Link href="/dashboard/templates" className="text-cyan-400 hover:underline">
                   create one
                 </Link>
                 .
@@ -368,7 +368,7 @@ export default function ProjectsPage() {
           </div>
           <div className="grid grid-cols-2 items-end gap-3">
             <label className="block">
-              <span className="mb-1 block text-xs font-medium text-slate-400">Status</span>
+              <span className="mb-1 block text-xs font-medium text-stone-400">Status</span>
               <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className={inputCls}>
                 {STATUSES.map((s) => (
                   <option key={s} value={s}>
@@ -377,12 +377,12 @@ export default function ProjectsPage() {
                 ))}
               </select>
             </label>
-            <label className="flex items-center gap-2 pb-2 text-sm text-slate-300">
+            <label className="flex items-center gap-2 pb-2 text-sm text-stone-300">
               <input
                 type="checkbox"
                 checked={form.lender_mandated}
                 onChange={(e) => setForm({ ...form, lender_mandated: e.target.checked })}
-                className="h-4 w-4 rounded border-slate-600 bg-slate-950 text-amber-500 focus:ring-amber-500/40"
+                className="h-4 w-4 rounded border-stone-600 bg-stone-950 text-cyan-500 focus:ring-cyan-500/40"
               />
               Lender mandated
             </label>
@@ -394,7 +394,7 @@ export default function ProjectsPage() {
 }
 
 const inputCls =
-  'w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder-slate-600 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40'
+  'w-full rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder-stone-600 focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500/40'
 
 function Input({
   label,
@@ -411,7 +411,7 @@ function Input({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-xs font-medium text-slate-400">{label}</span>
+      <span className="mb-1 block text-xs font-medium text-stone-400">{label}</span>
       <input
         type={type}
         value={value}

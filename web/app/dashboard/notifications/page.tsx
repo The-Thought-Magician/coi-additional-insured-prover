@@ -148,7 +148,7 @@ export default function NotificationsPage() {
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h1 className="text-2xl font-bold text-white">Notifications</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <p className="mt-1 text-sm text-stone-400">
             Compliance alerts, renewal reminders, and deficiency notices for your workspace.
           </p>
         </div>
@@ -167,13 +167,13 @@ export default function NotificationsPage() {
       <Card>
         <CardBody>
           <div className="flex flex-wrap items-center gap-3">
-            <div className="inline-flex overflow-hidden rounded-lg border border-slate-700">
+            <div className="inline-flex overflow-hidden rounded-lg border border-stone-700">
               {(['all', 'unread', 'read'] as Filter[]).map((f) => (
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
                   className={`px-3 py-2 text-sm font-medium capitalize transition-colors ${
-                    filter === f ? 'bg-amber-500 text-slate-950' : 'bg-slate-950 text-slate-300 hover:bg-slate-800'
+                    filter === f ? 'bg-cyan-500 text-stone-950' : 'bg-stone-950 text-stone-300 hover:bg-stone-800'
                   }`}
                 >
                   {f}
@@ -183,7 +183,7 @@ export default function NotificationsPage() {
             <select
               value={typeFilter}
               onChange={(e) => setTypeFilter(e.target.value)}
-              className="rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 focus:border-amber-500 focus:outline-none"
+              className="rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 focus:border-cyan-500 focus:outline-none"
             >
               <option value="all">All types</option>
               {typeOptions.map((t) => (
@@ -196,7 +196,7 @@ export default function NotificationsPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search notifications..."
-              className="min-w-[200px] flex-1 rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-slate-200 placeholder:text-slate-600 focus:border-amber-500 focus:outline-none"
+              className="min-w-[200px] flex-1 rounded-lg border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-200 placeholder:text-stone-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
         </CardBody>
@@ -222,24 +222,24 @@ export default function NotificationsPage() {
           {filtered.map((n) => (
             <Card
               key={n.id}
-              className={n.read ? 'opacity-70' : 'border-l-2 border-l-amber-500'}
+              className={n.read ? 'opacity-70' : 'border-l-2 border-l-cyan-500'}
             >
               <CardBody className="flex items-start gap-3">
                 <span
-                  className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${n.read ? 'bg-slate-700' : 'bg-amber-400'}`}
+                  className={`mt-1.5 h-2 w-2 flex-shrink-0 rounded-full ${n.read ? 'bg-stone-700' : 'bg-cyan-400'}`}
                   aria-hidden
                 />
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-medium text-slate-100">{n.title || typeLabel(n.type)}</span>
+                    <span className="font-medium text-stone-100">{n.title || typeLabel(n.type)}</span>
                     <Badge tone={typeTone(n.type)}>{typeLabel(n.type)}</Badge>
                     {!n.read && <Badge tone="amber">New</Badge>}
                   </div>
-                  {n.body && <p className="mt-1 text-sm text-slate-400">{n.body}</p>}
-                  <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-slate-500">
+                  {n.body && <p className="mt-1 text-sm text-stone-400">{n.body}</p>}
+                  <div className="mt-2 flex flex-wrap items-center gap-3 text-xs text-stone-500">
                     <span>{relativeTime(n.created_at)}</span>
                     {n.link && (
-                      <a href={n.link} className="text-amber-400 hover:text-amber-300">
+                      <a href={n.link} className="text-cyan-400 hover:text-cyan-300">
                         View details →
                       </a>
                     )}
